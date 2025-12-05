@@ -1,0 +1,70 @@
+ .wrapper {
+      position: relative;
+      width: 900px;
+      height: 900px;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    /* axes */
+
+    .axis-label {
+      position: absolute;
+      font-size: 10px;
+      color: #888;
+      pointer-events: none;
+    }
+
+    .tile {
+      position: absolute;
+      background: #d9d9d9;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 10px;
+      padding: 4px;
+      box-sizing: border-box;
+      border-radius: 2px;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+      user-select: none;
+    }
+
+    .tile span {
+      pointer-events: none;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+
+    .filter-btn {
+      border: 1px solid #555;
+      background: #222;
+      color: #eee;
+      padding: 4px 10px;
+      font-size: 11px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .filter-btn:hover {
+      background: #333;
+    }
+
+    .filter-btn.active {
+      background: #f5f5f5;
+      color: #000;
+      border-color: #f5f5f5;
+    }
