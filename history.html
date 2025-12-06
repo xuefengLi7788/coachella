@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coachella: 20 Years In The Desert</title>
+    <style>
+        /* 基础重置：消除默认边距与内边距 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 页面容器：控制整体宽度与居中 */
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 标题区域：还原顶部大标题位置 */
+        .header {
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+            .header h1 {
+                font-size: 36px;
+                line-height: 1.2;
+                margin-bottom: 10px;
+            }
+
+        /* 纪录片介绍区：文字与图片占位布局 */
+        .doc-intro {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 60px;
+            align-items: flex-start;
+        }
+
+        /* 图片占位：还原原网页图片位置与尺寸比例 */
+        .img-placeholder {
+            width: 400px;
+            height: 225px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* 纪录片文字区：控制文字段落位置与行高 */
+        .doc-text {
+            flex: 1;
+        }
+
+            .doc-text p {
+                font-size: 16px;
+                line-height: 1.6;
+                margin-bottom: 15px;
+            }
+
+        /* 年份时间轴：网格布局还原20年内容排列 */
+        .years-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* 单年份卡片：还原每个年份的文字与图片位置 */
+        .year-card {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* 年份数字：固定宽度，确保对齐 */
+        .year-number {
+            width: 80px;
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+        /* 年份内容：包含标题、描述与图片标注 */
+        .year-content {
+            flex: 1;
+        }
+
+            .year-content h3 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .year-content p {
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 15px;
+            }
+
+        /* 图片标注：还原照片拍摄者文字位置 */
+        .photo-credit {
+            font-size: 12px;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        /* 无效字符占位：还原原网页中乱码位置（仅作占位，不影响核心内容） */
+        .invalid-chars {
+            font-size: 14px;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        /* 播放列表区域：还原底部列表位置与排版 */
+        .playlists {
+            margin-top: 80px;
+            border-top: 1px solid #000;
+            padding-top: 30px;
+        }
+
+            .playlists h2 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+        .playlist-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- 顶部标题 -->
+        <div class="header">
+            <h1>Coachella: 20 Years In The Desert</h1>
+        </div>
+
+        <!-- 纪录片介绍：文字+图片布局 -->
+        <div class="doc-intro">
+            <!-- 图片占位（原网页图片位置） -->
+            <div class="img-placeholder">
+                [Coachella: 20 Years In The Desert 纪录片封面图]
+            </div>
+            <!-- 纪录片文字内容 -->
+            <div class="doc-text">
+                <p>YouTube Originals and Coachella have partnered to create a feature-length documentary “Coachella: 20 Years in the Desert.” Watch now only on YouTube.</p>
+                <p>The documentary features two decades in the making, opening up the vault for the very first time to present the performances and behind-the-scenes stories that shaped the music festival. The film gives a rare look at Coachella’s colorful beginning, presents exclusive, never-before-seen footage, interviews, and features key performances from some of the biggest names in music, including Billie Eilish, Kanye West, Daft Punk, Travis Scott, BLACKPINK, LCD Soundsystem, Rage Against The Machine, Pixies, Swedish House Mafia, Jane’s Addiction, Björk, The White Stripes, Madonna, Moby, Beck, Radiohead and more.</p>
+            </div>
+        </div>
+
+        <!-- 年份时间轴：20年关键事件布局 -->
+        <div class="years-timeline">
+            <!-- 1999年 -->
+            <div class="year-card">
+                <div class="year-number">1999</div>
+                <div class="year-content">
+                    <h3>Main Stage</h3>
+                    <p>The first Coachella was hosted under October skies. Palm trees dotted the main stage performers’ sunset backdrop and the story began.</p>
+                    <div class="invalid-chars">1 拉 - N 9 ĸ</div>
+                </div>
+            </div>
+
+            <!-- 2001年 -->
+            <div class="year-card">
+                <div class="year-number">2001</div>
+                <div class="year-content">
+                    <h3>Jane's Addiction</h3>
+                    <p>After nearly four years of disbandment, the legendary band reunited to headline Coachella.</p>
+                    <div class="photo-credit">Photo: Zach Cordner</div>
+                </div>
+            </div>
+
+            <!-- 2002年 -->
+            <div class="year-card">
+                <div class="year-number">2002</div>
+                <div class="year-content">
+                    <h3>Björk</h3>
+                    <p>The Icelandic singer and songwriter was several months pregnant when she took the stage to perform as a headlining act.</p>
+                    <div class="photo-credit">Photo: Brian Lima</div>
+                    <div class="invalid-chars">福 福 福 1 N 福 ō趣 % 1 福</div>
+                </div>
+            </div>
+
+            <!-- 2003年 -->
+            <div class="year-card">
+                <div class="year-number">2003</div>
+                <div class="year-content">
+                    <h3>The White Stripes</h3>
+                    <p>Coachella's early years hailed rock and indie bands as supreme. Jack & Meg White shredded the stage as The White Stripes.</p>
+                    <div class="photo-credit">Photo: Brian Moghadam</div>
+                    <div class="invalid-chars">4 福 公 W - HOLL YKOOD CA SKIXG HOUSE SHIXG HOUSE HOLL YNIOD CA 323 45G-1216</div>
+                </div>
+            </div>
+
+            <!-- 2004年 -->
+            <div class="year-card">
+                <div class="year-number">2004</div>
+                <div class="year-content">
+                    <h3>Campgrounds</h3>
+                    <p>Every year, thousands descend upon Indio for a weekend of music and head back to their tents at the end of the night to rest under the stars.</p>
+                    <div class="invalid-chars">ĺ 我 / 1 福 福 爱 N</div>
+                </div>
+            </div>
+
+            <!-- 2005年 -->
+            <div class="year-card">
+                <div class="year-number">2005</div>
+                <div class="year-content">
+                    <h3>M.I.A.</h3>
+                    <p>The first of several of her performances at Coachella, M.I.A rocked the stage for her first time in 2005. In 2009, she returned and incited chaos as she asked fans to storm the stage and party with her on it.</p>
+                    <div class="photo-credit">Photo: Brian Moghadam</div>
+                </div>
+            </div>
+
+            <!-- 2006年 -->
+            <div class="year-card">
+                <div class="year-number">2006</div>
+                <div class="year-content">
+                    <h3>Daft Punk</h3>
+                    <p>The legendary electronic producer duo’s Coachella performance marked the debut of their iconic pyramid stage. Their performance set a new standard for production technology at an electronic dance music show.</p>
+                    <div class="photo-credit">Photo: Zach Cordner</div>
+                    <div class="invalid-chars">1</div>
+                </div>
+            </div>
+
+            <!-- 2007年 -->
+            <div class="year-card">
+                <div class="year-number">2007</div>
+                <div class="year-content">
+                    <h3>Amy Winehouse</h3>
+                    <p>The late English sensation was listed on the bottom line of the billing poster yet was one of the most attended performances of the weekend. Amy Winehouse marked a point in Coachella's history where fans were coming to the festival not just to see the big headliners but also all of the smaller acts that they may not have known as well.</p>
+                    <div class="photo-credit">Photo: Brian Moghadam</div>
+                    <div class="invalid-chars">5 事 %</div>
+                </div>
+            </div>
+
+            <!-- 2008年 -->
+            <div class="year-card">
+                <div class="year-number">2008</div>
+                <div class="year-content">
+                    <h3>Roger Waters</h3>
+                    <p>The legendary guitarist of Pink Floyd fame played two sets at Coachella. In the midst of his performance, a giant inflatable pig (part of his production setup) came loose and floated off into the Indio night later to be discovered in a local resident's yard.</p>
+                    <div class="photo-credit">Photo: Jeff Kravtiz</div>
+                </div>
+            </div>
+
+            <!-- 2009年 -->
+            <div class="year-card">
+                <div class="year-number">2009</div>
+                <div class="year-content">
+                    <h3>The Serpent Mother</h3>
+                    <p>The art installations at Coachella have transformed year after year. In 2009, the Flaming Lotus Girls crafted a large scale, kinetic fire serpent mother coiled around her egg.</p>
+                    <div class="photo-credit">Photo: Zach Cordner</div>
+                    <div class="invalid-chars">在 福</div>
+                </div>
+            </div>
+
+            <!-- 2010年 -->
+            <div class="year-card">
+                <div class="year-number">2010</div>
+                <div class="year-content">
+                    <h3>JAY-Z</h3>
+                    <p>The superstar made history as the first rap artist to headline Coachella, helping usher in a new era of hip-hop headliners.</p>
+                    <div class="photo-credit">Photo: Zach Cordner</div>
+                </div>
+            </div>
+
+            <!-- 2011年 -->
+            <div class="year-card">
+                <div class="year-number">2011</div>
+                <div class="year-content">
+                    <h3>Tyler, the Creator</h3>
+                    <p>Just a few years before he was performing on stage at Coachella, Tyler, the Creator was joining fans in the mosh pit. He and his Odd Future gang also roamed the grounds with Super Soaker water guns spraying other attendees.</p>
+                    <div class="photo-credit">Photo: Dave Bullock</div>
+                    <div class="invalid-chars">POAAR</div>
+                </div>
+            </div>
+
+            <!-- 2012年 -->
+            <div class="year-card">
+                <div class="year-number">2012</div>
+                <div class="year-content">
+                    <h3>Dr. Dre & Snoop Dogg</h3>
+                    <p>The Coachella moment heard around the world - Dr. Dre and Snoop Dogg brought out the late rapper 2Pac, in the form of a hologram, for a one time special guest performance.</p>
+                    <div class="photo-credit">Photo: Christopher Polk</div>
+                    <div class="invalid-chars">· 1</div>
+                </div>
+            </div>
+
+            <!-- 2013年 -->
+            <div class="year-card">
+                <div class="year-number">2013</div>
+                <div class="year-content">
+                    <h3>Tame Impala</h3>
+                    <p>Coachella has become a breaking point for many artists' careers. Kevin Parker of Tame Impala, performed early in the day in 2013, during the band's emerging years, and returned to later headline the show in 2019.</p>
+                    <div class="photo-credit">Photo: Brantley Gutierrez</div>
+                    <div class="invalid-chars">福</div>
+                </div>
+            </div>
+
+            <!-- 2014年 -->
+            <div class="year-card">
+                <div class="year-number">2014</div>
+                <div class="year-content">
+                    <h3>OutKast</h3>
+                    <p>The southern hip-hop duo composed of André 3000 and Big Boi, reunited at Coachella for their first live performance in seven years.</p>
+                    <div class="photo-credit">Photo: Jose Negrete</div>
+                    <div class="invalid-chars">ų SOLD OUT 生 |</div>
+                </div>
+            </div>
+
+            <!-- 2015年 -->
+            <div class="year-card">
+                <div class="year-number">2015</div>
+                <div class="year-content">
+                    <h3>Alabama Shakes</h3>
+                    <p>Over the years, Coachella morphed and changed and introduced artists from a wide array of different musical genres. Everything from classic rock, to hip-hop, electronic, Latin, and pop music have graced the stages at the Polo fields.</p>
+                    <div class="photo-credit">Photo: Koury Angelo</div>
+                    <div class="invalid-chars">2</div>
+                </div>
+            </div>
+
+            <!-- 2016年 -->
+            <div class="year-card">
+                <div class="year-number">2016</div>
+                <div class="year-content">
+                    <h3>Purity Ring</h3>
+                    <p>A dazzling, transcendent performance in the Mojave - one of the group's last live shows before a four year break from music.</p>
+                    <div class="photo-credit">Photo: Ryan Muir</div>
+                    <div class="invalid-chars">■ 1</div>
+                </div>
+            </div>
+
+            <!-- 2017年 -->
+            <div class="year-card">
+                <div class="year-number">2017</div>
+                <div class="year-content">
+                    <h3>Kendrick Lamar</h3>
+                    <p>After surprise dropping his Grammy award winning album DAMN on the Friday morning before Weekend 1 of Coachella, Kendrick closed out on Sunday night performing his hit "HUMBLE" live for the first time ever.</p>
+                    <div class="photo-credit">Photo: Andrew Jorgenson</div>
+                    <div class="invalid-chars">1 P 页 ⌟ % ŕ 福 A 福</div>
+                </div>
+            </div>
+
+            <!-- 2018年 -->
+            <div class="year-card">
+                <div class="year-number">2018</div>
+                <div class="year-content">
+                    <h3>Beyoncé</h3>
+                    <p>Bey made history as the first African-American woman to headline Coachella. Raising the bar for production and performance standards around the world, her performance was the highest attended Coachella performance to date.</p>
+                    <div class="photo-credit">Photo: Larry Busacca / Getty</div>
+                    <div class="invalid-chars">+1 1 -</div>
+                </div>
+            </div>
+
+            <!-- 2019年 -->
+            <div class="year-card">
+                <div class="year-number">2019</div>
+                <div class="year-content">
+                    <h3>Blackpink</h3>
+                    <p>The first, all-female K-Pop super group to perform at Coachella. Their performance was live-streamed on the video screens at Times Square in New York.</p>
+                    <div class="photo-credit">Photo: Quinn Tucker</div>
+                    <div class="invalid-chars">公</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 播放列表区域 -->
+        <div class="playlists">
+            <h2>Coachella : 20 Years in the Desert Playlists</h2>
+            <div class="playlist-list">
+                <span>RAP FROM THE PAST</span>
+                <span>RETRO ROCK N ROLL</span>
+                <span>VINTAGE INDIE</span>
+                <span>RAVE DAYS GONE BY</span>
+                <span>Rave Days Gone By</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
