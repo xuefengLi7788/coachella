@@ -1,70 +1,130 @@
- .wrapper {
-      position: relative;
-      width: 900px;
-      height: 900px;
-      background: #ffffff;
-      overflow: hidden;
-    }
+/* index */
+@font-face {
+    font-family: "Yipes"; 
+    /* 替换为你的字体文件路径+格式，多格式更兼容 */
+    src: url("fonts/Yipes.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+font-family: "body"; 
+/* 替换为你的字体文件路径+格式，多格式更兼容 */
+src: url("fonts/Harietta Bold.otf") format("truetype");
+font-weight: normal;
+font-style: normal;
+}
 
-    /* axes */
+.site-header {
+  font-family: "Yipes";
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 32px 60px 0;
 
-    .axis-label {
-      position: absolute;
-      font-size: 10px;
-      color: #888;
-      pointer-events: none;
-    }
+}
+.dates {
+  margin: 6px 0 0;
+  font-size: 14px;
+  letter-spacing: 2.5em;
+}
 
-    .tile {
-      position: absolute;
-      background: #d9d9d9;
-      color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 10px;
-      padding: 4px;
-      box-sizing: border-box;
-      border-radius: 2px;
-      box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-      user-select: none;
-    }
+.main-nav {
+  display: flex;
+  font-family: "body",sans-serif;
+  align-items: center;
+  gap: 18px;
+  font-size: 15px;
+  padding-top: 4px;
+}
 
-    .tile span {
-      pointer-events: none;
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+.nav-link {
+  text-decoration: none;
+  color: #111;
+  letter-spacing: 0.08em;
+  text-transform: capitalize;
+}
 
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: center;
-      margin-bottom: 4px;
-    }
+.nav-link:hover {
+  text-decoration: underline;
+}
 
-    .filter-btn {
-      border: 1px solid #555;
-      background: #222;
-      color: #eee;
-      padding: 4px 10px;
-      font-size: 11px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
-    }
+.nav-separator {
+  font-size: 12px;
+}
 
-    .filter-btn:hover {
-      background: #333;
-    }
+.search-btn {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding-top: 4px;
+  padding-right: 20px;
+}
 
-    .filter-btn.active {
-      background: #f5f5f5;
-      color: #000;
-      border-color: #f5f5f5;
-    }
+/* Lineup layout */
+
+.lineup {
+  max-width: 1100px;
+  margin: 80px auto 120px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.day {
+  margin-bottom: 80px;
+}
+
+.day-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
+}
+
+.artists {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 15px;
+}
+.artist {
+  display: inline-block;
+  margin: 4px 6px;
+  transition: transform 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+  cursor: pointer;
+}
+
+.artist:hover {
+  transform: scale(1.18);
+  color: #000;
+  font-weight: 600;
+  opacity: 1;
+}
+
+/* hover 整组时其他 artist 会稍微变暗，突出当前 hover 的那个 */
+.artists:hover .artist {
+  opacity: 0.35;
+}
+
+.artists .artist:hover {
+  opacity: 1;
+}
+
+.designer {
+  margin-top: 40px;
+}
+
+.designer-name {
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.designer-role {
+  margin: 0;
+  font-size: 14px;
+}
+
+
+
+
+
+
