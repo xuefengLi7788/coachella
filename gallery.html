@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coachella Photo Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 顶部标题区 */
+        .header {
+            margin-bottom: 40px;
+            text-align: left;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #000;
+        }
+
+            .header h1 {
+                font-size: 42px;
+                margin-bottom: 10px;
+            }
+
+            .header p {
+                font-size: 18px;
+            }
+
+        /* 周末亮点区域容器 */
+        .gallery-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        /* 单个周末亮点区域 */
+        .weekend-section {
+            border: 1px solid #000;
+            padding: 25px;
+        }
+
+        .weekend-header {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #000;
+        }
+
+            .weekend-header h2 {
+                font-size: 26px;
+                margin-bottom: 8px;
+            }
+
+        .weekend-tag {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .hashtag {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* 图片+文字网格布局 */
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* 图片文字卡片 */
+        .photo-card {
+            border: 1px solid #000;
+            padding: 15px;
+        }
+
+        .photo-placeholder {
+            height: 220px;
+            border: 1px solid #000;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .photo-caption {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .invalid-chars {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- 顶部标题区 -->
+        <div class="header">
+            <h1>Photo Gallery</h1>
+            <p>Photo highlights from Coachella 2025</p>
+        </div>
+
+        <!-- 画廊主体区域 -->
+        <div class="gallery-sections">
+            <!-- 周末1亮点 -->
+            <div class="weekend-section">
+                <div class="weekend-header">
+                    <h2>Coachella Weekend 1 Highlights</h2>
+                    <div class="weekend-tag">Taken on a Google Pixel</div>
+                    <div class="hashtag">#teampixel</div>
+                </div>
+
+                <div class="photos-grid">
+                    <!-- 图片1 -->
+                    <div class="photo-card">
+                        <div class="photo-placeholder">[图片占位：Coachella Tower]</div>
+                        <div class="photo-caption">Coachella Tower under a blue sky</div>
+                        <div class="invalid-chars">0 三 - 名 ȹ V 街 1</div>
+                    </div>
+
+                    <!-- 图片2 -->
+                    <div class="photo-card">
+                        <div class="photo-placeholder">[图片占位：Yuma帐篷灯光秀]</div>
+                        <div class="photo-caption">Light show in Yuma tent</div>
+                        <div class="invalid-chars">福 货</div>
+                    </div>
+
+                    <!-- 图片3 -->
+                    <div class="photo-card">
+                        <div class="photo-placeholder">[图片占位：黄昏塔与摩天轮]</div>
+                        <div class="photo-caption">Coachella tower and ferris wheel at dusk</div>
+                        <div class="invalid-chars">ȑ 4 - 88808。 西 地 百 A</div>
+                    </div>
+
+                    <!-- 图片4 -->
+                    <div class="photo-card">
+                        <div class="photo-placeholder">[图片占位：粉丝近照]</div>
+                        <div class="photo-caption">close up of fans walking inside Coachella tower</div>
+                        <div class="invalid-chars">C P 古 · 罗 0 P 爱 % 舞 添 羊</div>
+                    </div>
+
+                    <!-- 图片5 -->
+                    <div class="photo-card">
+                        <div class="photo-placeholder">[图片占位：日落山丘粉丝]</div>
+                        <div class="photo-caption">fans on hill at sunset</div>
+                        <div class="invalid-chars">拳 5 2 家 V 1</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 周末2亮点 -->
+            <div class="weekend-section">
+                <div class="weekend-header">
+                    <h2>Coachella Weekend 2 Highlights</h2>
+                    <div class="weekend-tag">Taken on a Google Pixel</div>
+                    <div class="hashtag">#teampixel</div>
+                </div>
+
+                <div class="photos-grid">
+                    <!-- 周末2图片卡片（原网页未明确图片描述，保留无效字符位置） -->
+                    <div class="photo-card">
+                        <div class="photo-placeholder">[图片占位]</div>
+                        <div class="invalid-chars">1 福 ' / / 7 諍 2 大 福</div>
+                    </div>
+
+                    <div class="photo-card">
+                        <div class="photo-placeholder">[图片占位]</div>
+                        <div class="invalid-chars">福 Ⓡ 恭喜 % 1 福</div>
+                    </div>
+
+                    <div class="photo-card">
+                        <div class="photo-placeholder">[图片占位]</div>
+                        <div class="invalid-chars">% 2 日 Ⓡ 1 1 1</div>
+                    </div>
+
+                    <div class="photo-card">
+                        <div class="photo-placeholder">[图片占位]</div>
+                        <div class="invalid-chars">PIZZA PIZX 重 - 1 5 ■</div>
+                    </div>
+
+                    <div class="photo-card">
+                        <div class="photo-placeholder">[图片占位]</div>
+                        <div class="invalid-chars">租 我情 ǩ 特 十 " 1 A 1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
