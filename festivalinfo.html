@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coachella 2026 - General Pass & Order Info</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航栏 */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #333;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* 标题区域 */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border: 1px solid #eee;
+        }
+
+        .year {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .main-title {
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* 侧边导航 */
+        .sidebar {
+            float: left;
+            width: 250px;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-right: 30px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .sidebar-links {
+            list-style: none;
+        }
+
+        .sidebar-links li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .sidebar-links a:hover {
+            color: #666;
+            text-decoration: underline;
+        }
+
+        /* 主内容区域 */
+        .main-content {
+            overflow: hidden;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 5px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #222;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 25px 0 15px;
+            color: #333;
+        }
+
+        .info-list {
+            list-style-position: inside;
+            margin-bottom: 20px;
+        }
+
+        .info-list li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            padding-left: 10px;
+        }
+
+        /* 小时数分栏布局 */
+        .hours-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .hours-column {
+            flex: 1;
+        }
+
+        /* 表格样式 */
+        .will-call-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .will-call-table th,
+        .will-call-table td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .will-call-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .will-call-table tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        /* 重要信息高亮 */
+        .important-note {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-size: 14px;
+            border-left: 4px solid #ffc107;
+        }
+
+        /* 联系信息样式 */
+        .contact-info {
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .contact-link {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 地址样式 */
+        .address {
+            font-style: normal;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* 底部Logo */
+        .footer-logo {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 50px 0 30px;
+            color: #222;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .top-nav {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .sidebar {
+                float: none;
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .hours-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .will-call-table th,
+            .will-call-table td {
+                padding: 8px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="top-nav">
+        <div class="logo">Coachella</div>
+        <div class="nav-links">
+            <a href="#arrival">Arrival</a>
+            <a href="#experience">Experience</a>
+            <a href="#echoes">Echoes</a>
+            <a href="#pass">Pass</a>
+        </div>
+    </div>
+
+    <!-- 标题区域 -->
+    <div class="header">
+        <div class="year">2026</div>
+        <div class="main-title">General Pass & Order Info</div>
+        <div class="subtitle">Review details about passes, getting your order, delivery, will call & more.</div>
+    </div>
+
+    <!-- 侧边导航 -->
+    <div class="sidebar">
+        <div class="sidebar-title">Quick Links</div>
+        <ul class="sidebar-links">
+            <li><a href="#general-festival">General Festival Info / Hours</a></li>
+            <li><a href="#about-passes">About Passes</a></li>
+            <li><a href="#ordering-info">Ordering Info / Rules</a></li>
+            <li><a href="#payment-plan">Payment Plan</a></li>
+            <li><a href="#getting-order">Getting Your Order / Shipping</a></li>
+            <li><a href="#will-call">Will Call / Box Office</a></li>
+        </ul>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div class="main-content">
+        <!-- 通用节日信息 -->
+        <section id="general-festival" class="section">
+            <h2 class="section-title">General Festival Info</h2>
+            <ul class="info-list">
+                <li>All ages welcome.</li>
+                <li>Kids 5 & under Free. (General Admission only.)</li>
+                <li>Both weekends will feature the same line up, art, food and activities.</li>
+                <li>Rain or shine.</li>
+                <li>All patrons subject to search.</li>
+                <li>Lineup & set times are subject to change without notice.</li>
+                <li>Merchandise, food and beverage vendors accept credit/debit/mobile pay only.</li>
+                <li>Onsite camping is 18+ unless accompanied by a parent or legal guardian.</li>
+            </ul>
+
+            <h3 class="section-subtitle">Hours</h3>
+            <div class="hours-container">
+                <div class="hours-column">
+                    <h4 class="section-subtitle" style="font-size: 16px;">Open</h4>
+                    <ul class="info-list">
+                        <li>General parking opens Friday-Sunday @ 11:00 am.</li>
+                        <li>Venue opens Friday-Sunday @ 1pm-ish*</li>
+                        <li>Camping, Companion Camping parking & Lake Eldorado parking opens Thursdays @ 9:00am.</li>
+                        <li>Review camping check in times here.</li>
+                        <li>Coachella shuttle service will depart from local hotels 1:00pm Friday-Sunday.</li>
+                    </ul>
+                </div>
+                <div class="hours-column">
+                    <h4 class="section-subtitle" style="font-size: 16px;">Close</h4>
+                    <ul class="info-list">
+                        <li>Venue curfew is Friday/Saturday @ 1:00am & Sunday @ Midnight.</li>
+                        <li>General parking closes Sundays (Monday 2am).</li>
+                        <li>Review more parking related details here.</li>
+                        <li>Camping, Companion Camping parking & Lake Eldorado parking closes Mondays @ 10:00am</li>
+                        <li>Camping & Companion Camping parking vehicle lock down, No exit/entry Friday-Sunday 9:00pm - 2:00am</li>
+                        <li>Coachella shuttle return service will end 60 minutes after the music ends each night.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于通行证 -->
+        <section id="about-passes" class="section">
+            <h2 class="section-title">About Passes</h2>
+            <ul class="info-list">
+                <li>A Festival Pass is a single wristband that is worn all three days.</li>
+                <li>A wristband is valid for the entire weekend that you purchased.</li>
+                <li>A wristband is only valid for the specific weekend that you purchased.</li>
+                <li>A wristband is required to enter the parking, camping and venue grounds.</li>
+                <li>Your wristband won't be affected by showering, swimming or airport screenings.</li>
+                <li>Attendees must scan out when exiting the venue in order to scan back in again.</li>
+                <li>Do not subject your sensitive RFID wristband to the following: fire, cutting, excessive twisting, pulling, stretching or customization.</li>
+                <li>Wristbands are void if tampered with or removed.</li>
+                <li>Wristbands are non-transferable once applied.</li>
+                <li>Do not put your wristband on until you are on your way to the festival and have registered it.</li>
+                <li>Wristband registration required via the Coachella Mobile App.</li>
+            </ul>
+        </section>
+
+        <!-- 订购信息和规则 -->
+        <section id="ordering-info" class="section">
+            <h2 class="section-title">Ordering Info & Rules</h2>
+            <p class="contact-info">Our ticketing platform is via AXS. Create a Coachella Fan Account now or login to or update your current Fan Account information here.</p>
+            <p class="contact-info">For help with your order or account, please contact AXS order support: <a href="https://support.axs.com/" class="contact-link">https://support.axs.com/</a></p>
+            <p class="contact-info">Monday-Friday: 8am-10pm CST</p>
+            <p class="contact-info">Saturday-Sunday: 12pm-10pm CST</p>
+            <div class="contact-info">Live Chat available!</div>
+
+            <ul class="info-list">
+                <li>Limit Eight (8) Festival Passes of any combination per weekend.</li>
+                <li>Limit Two (2) Camping sites per order.</li>
+                <li>Limit Two (2) Companion Camping Parking Passes per order.</li>
+                <li>Orders over the limit in any combination of orders and/or passes are subject to cancellation at any time without notice.</li>
+                <li>Any orders found to be placed for yourself or others to circumvent the Festival Pass limit, regardless of method, will be subject to cancellation of order and pass (with refund) at any time, without notice.</li>
+                <li>Onsite campers must also have a Festival Pass.</li>
+                <li>All sales are final-no refunds, cancellations or exchanges (unless the festival is postponed or canceled).</li>
+                <li>Minimum browser requirements required to place an order online. Make sure you have the most updated browser version.</li>
+                <li>Please read the Terms of Sale and Festival Ticket Terms you are agreeing to when obtaining passes.</li>
+                <li>Do not buy passes from a 3rd party/scalper. We won't service, authenticate or support passes purchased from a third party or scalper. We do not assist in any 3rd party transactions.</li>
+                <li>Information on this page may be updated/changed at any time and without notice.</li>
+            </ul>
+        </section>
+
+        <!-- 支付计划 -->
+        <section id="payment-plan" class="section">
+            <h2 class="section-title">About Passes (Payment Plan)</h2>
+            <p class="contact-info" style="font-weight: bold;">$49.99 down due at time of purchase, then divide the remaining balance equally, monthly, through 3/7/25</p>
+
+            <h3 class="section-subtitle">Payment Plan Info</h3>
+            <ul class="info-list">
+                <li>Payment Plans are available for all orders over $100 while supplies last.</li>
+                <li>Last chance to put $49.99 down and split your order into equal payments is 1/30/25</li>
+                <li>Only $41 flat fee for payment plan. No added interest.</li>
+                <li>PayPal payment method not available for Payment Plan.</li>
+                <li>You may pay in full if you do not want to use the payment plan.</li>
+                <li>You must select the payment plan during the checkout process. If you miss this, you'll be charged in full.</li>
+                <li>There will be no account adjustments.</li>
+                <li>Exact payment amounts may vary by a few cents due to rounding, but the total due will not exceed order total.</li>
+                <li>Payments are automated and may take up to 72 hours to process.</li>
+                <li>Please wait for your payment to process. If you make a manual payment during this time, the automatic payment may still process, resulting in a double charge.</li>
+                <li>No refunds, cancellations or exchanges.</li>
+                <li>Your order will not be eligible for the Waitlist until it has been paid in full.</li>
+            </ul>
+        </section>
+
+        <!-- 取票点/票房信息 -->
+        <section id="will-call" class="section">
+            <h2 class="section-title">Will Call / Box Office</h2>
+            <div class="address">
+                Indian Wells Tennis Garden<br>
+                78200 Miles Avenue, Indian Wells, CA 92210<br>
+                Enter gate 4 off of Miles Ave.
+            </div>
+
+            <ul class="info-list">
+                <li>You can not pick up weekend 2 orders during weekend 1.</li>
+                <li>Absolutely No name changes allowed. No Alternative box office pick ups allowed. No exceptions.</li>
+                <li>There is NO will call box office for order pick up at the venue. You must go to the Indian Wells Tennis Garden.</li>
+                <li>Physical Government-issued photo ID and order confirmation are required for Will Call pick up.</li>
+                <li>For wristband help, please remember the wristband must be registered in the name of the person seeking assistance at the window.</li>
+            </ul>
+
+            <h3 class="section-subtitle">Dates / Hours</h3>
+            <table class="will-call-table">
+                <thead>
+                    <tr>
+                        <<th>Day</</th>
+                        <<th>Weekend 1</</th>
+                        <<th>Weekend 2</</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wed</td>
+                        <td>4/9/25 8am-9pm</td>
+                        <td>4/16/25 8am-9pm</td>
+                    </tr>
+                    <tr>
+                        <td>Thu</td>
+                        <td>4/10/25 8am-1am</td>
+                        <td>4/17/25 8am-1am</td>
+                    </tr>
+                    <tr>
+                        <td>Fri</td>
+                        <td>4/11/25 8am-11pm</td>
+                        <td>4/18/25 8am-11pm</td>
+                    </tr>
+                    <tr>
+                        <td>Sat</td>
+                        <td>4/12/25 9am-9pm</td>
+                        <td>4/19/25 9am-9pm</td>
+                    </tr>
+                    <tr>
+                        <td>Sun</td>
+                        <td>4/13/25 9am-6pm</td>
+                        <td>4/20/25 9am-6pm</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 14px; color: #666;">*Subject to change. Check before you head out.</p>
+        </section>
+    </div>
+
+    <!-- 底部Logo -->
+    <div class="footer-logo">COACHELLA</div>
+</body>
+</html>
