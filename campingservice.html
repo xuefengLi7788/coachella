@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coachella Camping</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 顶部标题区 */
+        .header {
+            margin-bottom: 40px;
+        }
+
+            .header h1 {
+                font-size: 42px;
+                margin-bottom: 10px;
+            }
+
+            .header p {
+                font-size: 18px;
+                margin-bottom: 5px;
+            }
+
+        .invalid-chars {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        /* 露营类型区域：网格布局，还原双列/多列排布 */
+        .camping-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        /* 单个露营类型卡片 */
+        .camping-card {
+            margin-bottom: 30px;
+        }
+
+            .camping-card h2 {
+                font-size: 26px;
+                margin-bottom: 15px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid #000;
+            }
+
+            .camping-card h3 {
+                font-size: 20px;
+                margin: 25px 0 12px;
+            }
+
+            .camping-card p {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+
+            .camping-card ul {
+                padding-left: 25px;
+                margin-bottom: 15px;
+            }
+
+            .camping-card li {
+                font-size: 15px;
+                margin-bottom: 8px;
+            }
+
+        /* 房车类型子卡片 */
+        .van-subtypes {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .van-subtype {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 1px solid #000;
+        }
+
+            .van-subtype h4 {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+
+        /* 模式切换（DAY/NIGHT MODE） */
+        .mode-container {
+            display: flex;
+            gap: 30px;
+            margin: 15px 0;
+        }
+
+        .mode-card {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #000;
+        }
+
+            .mode-card h5 {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+
+        /* 规则与信息区域：单栏布局 */
+        .rules-info {
+            margin-bottom: 60px;
+        }
+
+            .rules-info h2 {
+                font-size: 30px;
+                margin-bottom: 25px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #000;
+            }
+
+        .rules-section {
+            margin-bottom: 35px;
+        }
+
+            .rules-section h3 {
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+
+        /* 禁止物品列表：多列布局 */
+        .prohibited-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* 便利设施区域：图标+文字布局 */
+        .amenities {
+            margin-bottom: 60px;
+        }
+
+            .amenities h2 {
+                font-size: 30px;
+                margin-bottom: 25px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #000;
+            }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .amenity-card {
+            padding: 15px;
+            border: 1px solid #000;
+        }
+
+        .amenity-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .amenity-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .amenity-card p {
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* 高级露营区域 */
+        .premium-camping {
+            margin-bottom: 40px;
+        }
+
+            .premium-camping h2 {
+                font-size: 30px;
+                margin-bottom: 25px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #000;
+            }
+
+        .premium-card {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #000;
+        }
+
+            .premium-card h3 {
+                font-size: 22px;
+                margin-bottom: 12px;
+            }
+
+            .premium-card p {
+                font-size: 15px;
+                margin-bottom: 10px;
+            }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- 顶部标题区 -->
+        <div class="header">
+            <h1>Camping</h1>
+            <p>Camp onsite and make friends for life.</p>
+            <p>Festival passes sold separately.</p>
+            <div class="invalid-chars">烧 1 福</div>
+        </div>
+
+        <!-- 露营类型区域（双列布局） -->
+        <div class="camping-types">
+            <!-- 汽车露营 -->
+            <div class="camping-card">
+                <h2>Car Camping, Preferred, and Powered Car Camping</h2>
+                <p>Our most popular overnight option lets you park a vehicle on your campsite and build your home away from home for you and your crew. Level up with a reserved “Preferred” or “Front Row Preferred” site located in lot 8 or a Powered site in Lot 5A.</p>
+                <div class="invalid-chars">00+ 狰, 我 2 - 1 A</div>
+                <div class="invalid-chars">CAMPING GENERAL STORE 福 在 1 S 511TH ST S512TNST S513 ST O 5 ▃ 福 1 4 2 -</div>
+                <div class="invalid-chars">ALL HEADPHONES TD CHECK IN TENT PLEASE RETURNY</div>
+
+                <h3>What To Expect</h3>
+                <p>Explore all the extra amenities and activities camping has to offer before and after the show each night. Make friends for life from all over the world.</p>
+                <ul>
+                    <li>All car camping sites are 30'x10'</li>
+                    <li>Unlimited friends/tents per car camping site, if they fit!</li>
+                    <li>One vehicle per site allowed.</li>
+                    <li>One vehicle per site required.</li>
+                    <li>Sites assigned in order of arrival (per spot type). (review camping info & rules below for “wait together camp together” details!)</li>
+                    <li>Preferred Car Camping sites located in lot 8. Don’t rush! Arrive at your leisure.</li>
+                    <li>Festival Admission sold separately.</li>
+                </ul>
+
+                <h3>New for 2025:</h3>
+                <h4>Preferred Front Row Car Camping</h4>
+                <p>Arrive at your leisure in a guaranteed spot in the front row of the lot closest to the venue.</p>
+
+                <h4>Powered Car Camping</h4>
+                <p>Arrive at your leisure in a guaranteed powered spot.</p>
+                <ul>
+                    <li>Located in the southern corner of lot 5A, a short walk from the venue</li>
+                    <li>Includes 1 standard 3 prong outlet at your spot for charging small devices</li>
+                    <li>The power source will also include an extension cord equipped with 3 standard 3 prong outlets.</li>
+                    <li>OK: phones, portable phone charging banks, tablets, string lights.</li>
+                    <li>NOT OK: hairdryers, hair styling tools, microwaves, toasters etc.</li>
+                    <li>Access to adjacent flushing restrooms and showers on the south side of Lot 5B, exclusive to Powered Car and La Campana campers.</li>
+                    <li>Mirrors and plugs to do your hair.</li>
+                </ul>
+
+                <h3>Vehicle Type</h3>
+                <ul>
+                    <li>NO RV/Motorhome camping.</li>
+                    <li>Passenger cars, trucks or vans only.</li>
+                    <li>NO motorcycles, RVs, trailers, motorhomes, buses or U-Haul trucks.</li>
+                    <li>NO vehicles with running water/toilets.</li>
+                    <li>NO cooking inside vehicles. (Seriously - for the safety of you and those around you, DO NOT cook inside a vehicle!)</li>
+                    <li>Review FAQ about cooking.</li>
+                    <li>If you have a pre-installed, factory stove in your vehicle, your vehicle is allowed, however DO NOT cook inside the vehicle.</li>
+                </ul>
+                <p>Everything else is allowed if it fits in your spot.</p>
+                <p>Are you sharing a spot with someone driving separately to join you? Add’l. vehicles must purchase Camping Companion Parking.</p>
+                <p>For the safety of you and your neighbors, once you are parked in a camping spot, you may not move your vehicle for the duration of the festival. If you need to leave early and do not plan on returning to the festival, please visit the nearest Info Kiosk to inquire about an early vehicle escort. If your request can be accommodated, an escort may take up to two hours from the original request time. Vehicles may not exit between 9pm-2am FRI-SUN (daily). Once a vehicle vacates its spot, the site is considered relinquished. Any items remaining in the campsite will be considered trash and permanently disposed of.</p>
+
+                <h3>Additional Car Camping Requirements</h3>
+                <ul>
+                    <li>Emergency vehicle access roads shall have an unobstructed width of not less than 24 feet and unobstructed vertical clearance of not less than 13 feet 6 inches.</li>
+                    <li>Vehicles shall be parked in that the front of the vehicle is facing the drive isle/fire lane.</li>
+                    <li>Vehicles shall not be permitted to park parallel to the drive isle/fire lane.</li>
+                    <li>Review all Camping info & rules below!</li>
+                </ul>
+            </div>
+
+            <!-- 帐篷露营 -->
+            <div class="camping-card">
+                <h2>Tent Camping</h2>
+                <p>Pitch your desert palace on a field of grass. Perfect for international travelers, campers without cars or folks who want a vehicle-free environment.</p>
+                <div class="invalid-chars">黉 图 5 福 PICKLPP 福 - I PICKLEBA - GV R Y - - -</div>
+
+                <h3>What To Expect</h3>
+                <p>Make new friends from all over the world!</p>
+                <ul>
+                    <li>All tent camping sites are 15'x10'</li>
+                    <li>Unlimited friends/tents per site, if they fit!</li>
+                    <li>Sites assigned in order of arrival, separate from car camping.</li>
+                    <li>Includes one (1) overnight parking space in an adjacent lot to leave a car for the weekend.</li>
+                    <li>Additional vehicles must purchase Camping Companion Parking.</li>
+                    <li>Short walk to visit your friends in Car Camping!</li>
+                    <li>Review all camping info & rules below!</li>
+                    <li>Festival Admission sold separately.</li>
+                </ul>
+
+                <h2>Ready-Set Tent Camping</h2>
+                <p>New for 2025: Camp in a pre-set limited-edition Coachella souvenir tent.</p>
+
+                <h3>What to expect</h3>
+                <ul>
+                    <li>Sites come with one [1] Tent Camping Parking Pass in an adjacent lot.</li>
+                    <li>Additional vehicles must be parked in Camping Companion Parking. (Sold separately)</li>
+                    <li>Sites are 10’ x 15’.</li>
+                    <li>Ready-Set Tent sites accommodate 2 people max.</li>
+                    <li>Tent is 10’ x 10’ and includes items to take home:</li>
+                    <li>One (1) Commemorative Coachella tent</li>
+                    <li>Two (2) Custom sleeping bags</li>
+                    <li>Two (2) Air mattresses</li>
+                    <li>One (1) Hanging light (battery operated)</li>
+                    <li>Two (2) Pillows</li>
+                    <li>One (1) Lock</li>
+                </ul>
+                <p>Any items left after departure will be donated.</p>
+                <p>Short walk to visit your friends in Car Camping!</p>
+                <p>Review all camping info & rules below!</p>
+                <p>Festival Admission sold separately.</p>
+            </div>
+
+            <!-- La Campana 帐篷露营 -->
+            <div class="camping-card">
+                <h2>La Campana Tent Camping</h2>
+                <p>New for 2025: Camping, but make it nice with private, pre-set temperature controlled tents equipped with real beds for up to four people.</p>
+
+                <h3>What to expect</h3>
+                <p>Make new friends from all over the world!</p>
+                <ul>
+                    <li>Secluded, premium campground adjacent to the venue in Lot 5B</li>
+                    <li>Comes with 1 designated parking space in an adjacent lot</li>
+                    <li>Additional overnight Camping Companion Parking available for purchase</li>
+                    <li>Separate private check-in location</li>
+                    <li>Sites are 20’ x 30’ and accommodate 2 or 4 people max</li>
+                    <li>Exclusive showers and flushing restrooms for La Campana and Powered Car campers</li>
+                    <li>Mirrors and plugs to do your hair. Located in Lot 5B, not within tent/spot</li>
+                    <li>Concierge dedicated to this campground</li>
+                </ul>
+
+                <h3>Lodging in spacious 5-meter bell tent includes:</h3>
+                <p>Metal bed frames & mattresses: choice of either:</p>
+                <ul>
+                    <li>Two (2) or four (4) twin beds</li>
+                    <li>One (1) or two (2) queen beds</li>
+                </ul>
+                <p>Bedding includes:</p>
+                <ul>
+                    <li>Sheets, pillows, pillowcases</li>
+                    <li>Duvet, woven blanket, and throw pillows</li>
+                </ul>
+                <p>Furniture:</p>
+                <ul>
+                    <li>Two (2) bedside tables</li>
+                    <li>Two (2) side chairs</li>
+                    <li>One (1) bistro table</li>
+                    <li>One (1) rug</li>
+                </ul>
+                <p>Other amenities:</p>
+                <ul>
+                    <li>One (1) battery lightbulb</li>
+                    <li>One (1) Tent lock</li>
+                    <li>Portable cooling unit</li>
+                </ul>
+                <p>Power supply:</p>
+                <ul>
+                    <li>One (1) extension cord and Triple Tap (3 plugs) outlet in tent for charging small electronic devices</li>
+                    <li>OK: phones, portable phone charging banks, tablets, string lights</li>
+                    <li>NOT OK: hairdryers, hair styling tools, microwaves, toasters, etc.</li>
+                </ul>
+
+                <h3>More Info:</h3>
+                <ul>
+                    <li>Festival passes sold separately</li>
+                    <li>No additional sleeping tents allowed in footprint</li>
+                    <li>No smoking</li>
+                </ul>
+                <p>Tripping the power will result in:</p>
+                <ul>
+                    <li>One warning on the first occurrence</li>
+                    <li>Disconnection from the power grid on the second occurrence</li>
+                </ul>
+                <p>For La Campana guests wanting to request camping tents next to each other, please fill out this form no later than March 28, 2025.</p>
+                <p>Proximity requests are not guaranteed.</p>
+                <p>Additional La Campana details will be emailed closer to festival dates.</p>
+            </div>
+
+            <!-- Sunset Van Camp -->
+            <div class="camping-card">
+                <h2>Sunset Van Camp</h2>
+                <p>Introducing for 2025: Experience van camping in style with a pre-set, top-of-the-line campervan featuring A/C, real beds, a kitchen, power, and more.</p>
+                <div class="invalid-chars">% ŷ - 1 - - - % % - 氚 - - 文 ⌜ - 7 L ETON + - 1 -</div>
+
+                <div class="van-subtypes">
+                    <div class="van-subtype">
+                        <h4>High Roof Campervan / 1 Queen</h4>
+                        <p>Includes one (1) queen bed, a full-length closet, plentiful cabinets, booth seating for 6, and an 8-foot ceiling.</p>
+
+                        <div class="mode-container">
+                            <div class="mode-card">
+                                <h5>DAY MODE</h5>
+                                <p>Table Storage & Fridge</p>
+                                <p>Storage</p>
+                                <p>Flip Up</p>
+                                <p>Sliding door</p>
+                                <p>Sink Drop Down Table</p>
+                            </div>
+                            <div class="mode-card">
+                                <h5>NIGHT MODE</h5>
+                                <p>Privacy curtains</p>
+                                <p>USB/Wall plugs</p>
+                                <p>Queen bed</p>
+                                <p>Reading Lights Heater Privacy curtains</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="van-subtype">
+                        <h4>Pop-Top Campervan / 2 Doubles</h4>
+                        <p>Includes two (2) private double beds with an open floorplan, double sliding-door closet with 3-shelves each, additional baggage storage, and 11-foot pop-top ceiling.</p>
+
+                        <div class="mode-container">
+                            <div class="mode-card">
+                                <h5>DAY MODE</h5>
+                                <p>Portable Two-Burner Stove</p>
+                                <p>Cowet</p>
+                                <p>Closet Pantry</p>
+                                <p>Sink Fridge</p>
+                                <p>Sliding door</p>
+                            </div>
+                            <div class="mode-card">
+                                <h5>NIGHT MODE</h5>
+                                <p>Privacy curtains ⌜</p>
+                                <p>USB/Wall plugs</p>
+                                <p>Closet Closet Pantry</p>
+                                <p>Sink Fridge</p>
+                                <p>Double bed</p>
+                                <p>Reading Lights Heater Privacy curtains</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="van-subtype">
+                        <h4>Pop-Top Plus Campervan / 1 Queen & 1 Double</h4>
+                        <p>Includes one (1) queen bed and one (1) double bed with two (2) interior sofas, additional baggage storage, and and 11-foot pop-top ceiling.</p>
+
+                        <div class="mode-container">
+                            <div class="mode-card">
+                                <h5>DAY MODE</h5>
+                                <p>翩</p>
+                                <p>Storage Storage under bench seat</p>
+                                <p>Flip Up</p>
+                                <p>Fridge Sliding door</p>
+                                <p>Sink Drop Down</p>
+                            </div>
+                            <div class="mode-card">
+                                <h5>NIGHT MODE</h5>
+                                <p>Privacy curtains</p>
+                                <p>USB/Wall plugs</p>
+                                <p>Queen bed</p>
+                                <p>Reading Lights Heater Privacy curtains</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>What To Expect</h3>
+                <ul>
+                    <li>Secluded, premium campground adjacent to the venue entrance (south side of Lot 5A).</li>
+                    <li>Comes with 1 designated parking space in Lot 4A.</li>
+                    <li>Additional overnight Camping Companion Parking available for purchase.</li>
+                    <li>Separate private check-in location.</li>
+                    <li>Dedicated campground staff.</li>
+                    <li>Exclusive flushing toilets in campground.</li>
+                    <li>Access to adjacent 24 hr. showers in 5B.</li>
+                    <li>Vans are 19’ x 8’.</li>
+                    <li>Campsites are 30’ x 24’.</li>
+                    <li>Yes, you can bring an extra tent if it fits in your site.</li>
+                    <li>10 people max per campsite.</li>
+                    <li>Festival Admission sold separately.</li>
+                    <li>Sites are assigned first come first serve at check-in.</li>
+                </ul>
+
+                <h3>Bedding includes</h3>
+                <ul>
+                    <li>Memory foam bed(s)</li>
+                    <li>Sheets, pillows, pillowcases</li>
+                    <li>Duvet, woven blanket, and throw pillow</li>
+                    <li>Sleeping bags available upon request</li>
+                </ul>
+
+                <h3>Kitchen includes</h3>
+                <ul>
+                    <li>Fridge and freezer w/ice tray (2.3 cubic ft.)</li>
+                    <li>Drink cooler</li>
+                    <li>Sink with fresh water</li>
+                    <li>Portable 2-burner stove</li>
+                    <li>Full set of cooking and eating utensils, including silverware, plates, bowls, cups, pots & pans, and basic condiments (salt/pepper, olive oil)</li>
+                </ul>
+
+                <h3>Indoor Seating</h3>
+                <ul>
+                    <li>Two (2) swiveling captain’s chairs</li>
+                    <li>Sofa/bench seating</li>
+                </ul>
+
+                <h3>Outdoor Furniture</h3>
+                <ul>
+                    <li>Four (4) camp chairs</li>
+                    <li>One (1) outside table</li>
+                    <li>One (1) rug</li>
+                    <li>One (1) shade awning</li>
+                </ul>
+
+                <h3>Power</h3>
+                <ul>
+                    <li>Solar-powered battery</li>
+                    <li>110V household plugs</li>
+                    <li>USB plugs for charging cell phones or small electronics</li>
+                    <li>Dimmable indoor lighting</li>
+                    <li>Built-in premium stereo w/bluetooth connectivity</li>
+                    <li>NOT OK: microwaves, toasters, non-provided hairdryer, etc.</li>
+                </ul>
+
+                <h3>Other Amenities</h3>
+                <ul>
+                    <li>App-based vehicle locking to keep all of your valuables and gear safe!</li>
+                    <li>String lights and lanterns</li>
+                    <li>USB-powered fans</li>
+                    <li>Full-length mirrors and complimentary hair dryers</li>
+                    <li>A/C cooling unit</li>
+                    <li>Screened windows</li>
+                    <li>Blackout/privacy shades for all windows</li>
+                </ul>
+
+                <h3>More Info</h3>
+                <ul>
+                    <li>Driving features will be locked, campervans will NOT be able to move inside or outside of the village</li>
+                    <li>No smoking inside campervans</li>
+                    <li>Purchase of this pass secures booking and reservation of the chosen van type. At check-in, patrons will be required to enter into Moterra’s standard rental agreement, including a damage liability acknowledgement, and place a credit card down to cover incidentals and any damage caused to the camper vans.</li>
+                </ul>
+            </div>
+
+            <!-- Lake Eldorado -->
+            <div class="camping-card">
+                <h2>Lake Eldorado</h2>
+                <p>Lake Eldorado is nestled in between lot 7 & 8 in close proximity to the general store, food vendors and camping center hub, just a short few minutes walk to the venue entrance.</p>
+                <div class="invalid-chars">1 5 - D 9 晚 A 1 » 2 福 - 1 - 7 1 福 1 志 童 脊 - 监 1 19 T 7 A 1 A4 - % ţ</div>
+
+                <h3>What To Expect</h3>
+                <ul>
+                    <li>Separate private check-in location.</li>
+                    <li>24-hr. concierge.</li>
+                    <li>Includes one [1] overnight parking spot in an adjacent lot.</li>
+                    <li>Add’l. vehicles must purchase Camping Companion Parking.</li>
+                    <li>The sleeping bags and pillows are yours to keep. Any left after departure will be donated.</li>
+                    <li>Exclusive flushing toilets & showers located within Lake Eldorado.</li>
+                    <li>Mirrors and plugs to do your hair. (Located in Lake Eldorado, not within tent/lodge)</li>
+                    <li>Cell phone charging stations.</li>
+                    <li>No smoking inside lodges or tents.</li>
+                    <li>No, these are not air conditioned.</li>
+                    <li>Damage to lodges or tents will be billed directly to your credit card.</li>
+                    <li>No additional tents or canopies are allowed.</li>
+                    <li>Accommodations are assigned on a first-come, first-served basis. Arrive early to ensure your preferred location.</li>
+                </ul>
+
+                <h3>PLEASE NOTE:</h3>
+                <ul>
+                    <li>in 2026, sites will be reserved in advance upon purchase.</li>
+                    <li>Vehicle lockdown hours may change depending on traffic conditions. Please be prepared to wait. If you must leave Lake Eldorado parking before 2am on Sunday night, you need to depart before 9pm.</li>
+                    <li>No swimming in Lake Eldorado.</li>
+                    <li>No Gas or Propane generators.</li>
+                    <li>Sorry no air conditioning or power inside tents or lodges.</li>
+                    <li>Additional details will be emailed to purchasers closer to festival dates.</li>
+                    <li>Review all Camping info & rules below!</li>
+                </ul>
+
+                <h3>2-Person Lodge</h3>
+                <p>Ready to go 8’ x 12’ x 8’ wood lodge. Comes with two cots, sleeping bags and pillows, a lockable door, wood floor, 3 windows for added ventilation, indoor/outdoor lighting and storage cubbies. Includes 2 GA or 2 VIP passes.</p>
+
+                <h3>4-Person Tent</h3>
+                <p>Ready to go 12’x14′, fully pitched with four cots, sleeping bags and pillows, as well as chairs and a cooler. Includes 4 GA or 4 VIP passes.</p>
+            </div>
+        </div>
+
+        <!-- 露营规则与信息（单栏布局） -->
+        <div class="rules-info">
+            <h2>Camping Rules & Info</h2>
+
+            <div class="rules-section">
+                <h3>Times / Checking In & Out</h3>
+                <ul>
+                    <li>Festival pass required for entry.</li>
+                    <li>Camping is open Thu 9am-Mon 10am. Four nights stay!</li>
+                    <li>Car/Tent check-in Thu 9am-2am; Fri & Sat 9am-8pm, Sun 9am-3pm.</li>
+                    <li>Pedestrian check-in is open 24hrs. This is for joining your friends who already have a campsite or visiting friends that have a campsite. This is not for checking into a site you bought.</li>
+                    <li>Campground check-out is 10AM Monday morning.</li>
+                    <li>After 10AM, any items left behind in the campgrounds will be donated to our local nonprofit partner.</li>
+                    <li>Noise curfew starts at 1:30am.</li>
+                    <li>Campers and vehicles are searched at check-in.</li>
+                    <li>Everyone must be wearing a Festival Pass to enter camping.</li>
+                    <li>No camping allowed between festival weekends.</li>
+                </ul>
+            </div>
+
+            <div class="rules-section">
+                <h3>Age Limit</h3>
+                <p>Campers must be 18+ over unless with a parent/legal guardian.</p>
+                <p>A legal guardian is a person who has the legal authority and corresponding duty to care for the personal and property interests of another person. An older sibling, older friend or friend of the family does not automatically count as a legal guardian. A legal guardian is someone who would be held legally responsible for you by a court of law.</p>
+                <p>Legal Guardianship in CA Read More about Legal Guardianship</p>
+            </div>
+
+            <div class="rules-section">
+                <h3>Vehicle Lockdown</h3>
+                <ul>
+                    <li>No vehicle ins/outs.</li>
+                    <li>No exit during lockdown hours Fri - Sun 9pm-2am.</li>
+                    <li>Vehicle lockdown hours may change depending on traffic conditions. Please be prepared to wait. If you must leave camping before 2am on Sunday night, you need to depart before 9pm.</li>
+                </ul>
+            </div>
+
+            <div class="rules-section">
+                <h3>Arrive Together to Camp Together</h3>
+                <p>Multiple cars wishing to camp in sites next to each other must arrive at the same time.</p>
+                <p>You should plan on meeting up prior to driving into camping at the same time.</p>
+                <p>This applies to tent-only campers too.</p>
+                <p>If you don’t check-in together, you won’t be able to camp next to each other. There are no saving spots.</p>
+                <p>It's essential your entire group drives into the toll booth/search area together.</p>
+                <p>As your cars proceed through search, you can continue into a limited-time waiting area.</p>
+                <p>Once your entire group arrives in the waiting area, you may proceed to the lanes to enter the camping lots.</p>
+                <p>Camping staff will try their best to accommodate directing your group to an appropriate location. Let them know how many cars (or tent only campers) are part of your group.</p>
+                <p>You must all have the same type of camp spot to try to get placed next to each other.</p>
+            </div>
+
+            <div class="rules-section">
+                <h3>Misc / Good to Know</h3>
+                <ul>
+                    <li>In order to accommodate all campers, you must camp where assigned. Be kind to other campers. Attempting to camp anywhere else creates a significant disruption that negatively impacts everyone's comfort and safety.</li>
+                    <li>All of your items must stay within the marked lines. Do not sleep in or allow any items to extend into the fire lane. Party!</li>
+                    <li>Car Camping and Tent only camping spots are not mixed together.</li>
+                    <li>Car Camping and Tent Camping areas are open to visitation by all Coachella attendees. Excluding La Campana and Lake Eldorado</li>
+                    <li>Lake Eldorado access is restricted to Lake Eldorado guests.</li>
+                    <li>La Campana access is restricted to La Campana Campers.</li>
+                    <li>All campers are expected to behave in a manner that is courteous to other campers.</li>
+                    <li>All times and information on this page are subject to change without notice.</li>
+                    <li>Venue/promoter are not responsible for any materials misplaced, lost or stolen. It is recommended that you do not bring valuable items. If you do bring valuable items, please lock them in your car. Do not leave valuable items in your tent.</li>
+                    <li>High winds and heavy dust are common in the Coachella Valley. Prepare your campsite by sealing, securing or collapsing any structures or items that may be affected.</li>
+                    <li>We do not have communal toasters, toaster ovens or microwaves for use in camping.</li>
+                </ul>
+            </div>
+
+            <div class="rules-section">
+                <h3>Food / Drinks</h3>
+                <ul>
+                    <li>Campers may bring food & beverages.</li>
+                    <li>No glass allowed. Review prohibited items below.</li>
+                    <li>Campers 21+ may bring 1 case of beer cans or a box of wine.</li>
+                    <li>If it appears that there is an excessive amount of alcohol for the number of people in the vehicle, or if anyone in the vehicle is under 21 years of age, we reserve the right to deny entry of the vehicle or require you to surrender the alcohol.</li>
+                    <li>Propane stoves allowed in Car Camping, Tent Camping, La Campana & Ready-Set Camping.</li>
+                    <li>Review FAQ about cooking.</li>
+                    <li>There is a General Store in camping with tons of stuff.</li>
+                    <li>Mobile Ice Sales will be available in all camp lots Thur 2pm – 5pm and Fri - Sun 9am – 3pm. Flag them down if you see them! Ice is also for sale in the General Store in Lot 8.</li>
+                    <li>Stay tuned for the Camping Eats & Drinks to be listed!</li>
+                </ul>
+            </div>
+
+            <div class="rules-section">
+                <h3>Camping Prohibited Items</h3>
+                <div class="prohibited-items">
+                    <div>NO Amplified Sound (Large Speakers, DJ Equipment, Non Factory installed Car Audio)</div>
+                    <div>NO Animals (Service Animals Are Allowed - See Accessibility)</div>
+                    <div>NO Branded Pop-Up Canopies or Tents</div>
+                    <div>NO Compressed Gas Tanks (Helium, Nitrous (haha), etc.)</div>
+                    <div>NO Drones or Remote-Control Vehicles or Toys</div>
+                    <div>NO Drugs or Drug Paraphernalia</div>
+                    <div>NO Extra Car Batteries</div>
+                    <div>NO Flammables (Incl. Fireworks, Explosives, Ammunition)</div>
+                    <div>NO Flashlights Over 5.5” In Length</div>
+                    <div>NO Furniture (Sofas, Couches, Recliners, Lay-Z-Boys, Home Furnishings, Non-Inflatable Mattresses - LEAVE NO TRACE)</div>
+                    <div>NO Generators (Gas)</div>
+                    <div>NO Glass Of Any Kind (Bottles, Large Mirrors, Containers, Solar Panels, Lights, etc.)</div>
+                    <div>NO Heating Appliances</div>
+                    <div>NO Kegs</div>
+                    <div>NO Metal Tent Stakes</div>
+                    <div>NO Open Flames (Campfires, Candles, Tiki Torches)</div>
+                    <div>NO Prescription Medication (must be in properly labeled containers that match the holder’s ID. No pillboxes.)</div>
+                    <div>NO Propane (Propane stoves allowed in Car Camping only. Review FAQ about cooking.)</div>
+                    <div>NO Party Balloons</div>
+                    <div>NO Personal Vehicles (Skates, Scooters, Skateboards, Hoverboards, Segways, Electric Scooters (Birds, Limes…)) (Personal Mobility Devices for ADA Guests and Bicycles are ok.)</div>
+                    <div>NO Rugs or Astroturf</div>
+                    <div>NO Scissors</div>
+                    <div>NO Slip-N-Slides</div>
+                    <div>NO Sports Equipment (Golf Clubs, Bats, Hockey Sticks, etc.)</div>
+                    <div>NO Squirt Guns Or Water Toys</div>
+                    <div>NO Tools (Sledgehammers, Screwdrivers, Hammers, Shovels, Gardening Tools, Metal Mallets, Woodchippers) (SMALL RUBBER MALLETS OK)</div>
+                    <div>NO Vending (Inventory will be considered surrendered and not returned.)</div>
+                    <div>NO Walkie Talkies / 2-way Radios</div>
+                    <div>NO Weapons - Guns, Ammo, Tasers, Pepper Spray/Mace, Knives (incl. Cooking or Steak Knives)... INCLUDES ALL OFF-DUTY LAW ENFORCEMENT OR CONCEALED PERMITS</div>
+                    <div>NO Workout Equipment (Kettlebells, Dumbbells, Barbells, etc.)</div>
+                    <div>NO Wrapped or Sponsored Vehicles. (Your vehicle will be turned away if it has ads, marketing, sponsors or company logos on it. Rental company logos are permitted.)</div>
+                </div>
+            </div>
+
+            <div class="rules-section">
+                <h3>Camping Frequently Asked Questions</h3>
+                <p>For Camping frequently asked questions not covered on this camping page, please visit our FAQ page.</p>
+            </div>
+        </div>
+
+        <!-- 便利设施与活动区域 -->
+        <div class="amenities">
+            <h2>Amenities & Activities</h2>
+            <p>Recharge, refill, relax or re-up. Let the camping hub be the center of your festival stay. Stay tuned for 2025 Amenities & Activities.</p>
+
+            <div class="amenities-grid">
+                <div class="amenity-card">
+                    <div class="amenity-icon">[披萨图标]</div>
+                    <h3>Eat & Drink</h3>
+                    <p>Lots to munch on in Camp.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">[水瓶图标]</div>
+                    <h3>Free Water Refill Stations</h3>
+                    <p>Stay hydrated.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">[WiFi图标]</div>
+                    <h3>Free WIFI</h3>
+                    <p>Find #CoachellaWiFi in select areas.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">[购物车图标]</div>
+                    <h3>General Stores</h3>
+                    <p>Food, Toiletries & More</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">[冰块图标]</div>
+                    <h3>Ice</h3>
+                    <p>Sold at the General Store and from Ice golf carts roaming around camp.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">[手机图标]</div>
+                    <h3>Phone Charging</h3>
+                    <p>USB and AC charging stations located in the camping center + smaller stations in all camping lots.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">[卫生纸图标]</div>
+                    <h3>Portable Restrooms</h3>
+                    <p>Located in ALL camping lots, usually along the perimeter on 1 or more sides.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">[急救图标]</div>
+                    <h3>Security & Medical</h3>
+                    <p>24-hour emergency response. Location on Map.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">[淋浴图标]</div>
+                    <h3>Showers</h3>
+                    <p>Free for all campers or Super Duper showers for a fee.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">[巴士图标]</div>
+                    <h3>Free Supermarket Shuttles</h3>
+                    <p>Need to get something from the store? Shuttle from camping to a nearby grocery store and drug store with a pharmacy.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">[气球狗图标]</div>
+                    <h3>Activities</h3>
+                    <p>From the Silent Disco, to water balloon tosses, to the Coachella Art Studios & More.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">[信息图标]</div>
+                    <h3>Additional Services</h3>
+                    <p>Other services such as Lost & Found, locksmith & more also exist.</p>
+                </div>
+            </div>
+
+            <div class="invalid-chars">蛮 顺 面 - - 1 福 A 2 -</div>
+
+            <h3>Connect:</h3>
+            <p>You'll find #CoachellaWiFi in the following areas:</p>
+            <ul>
+                <li>Coachella Stage bar</li>
+                <li>12 Peaks bars</li>
+                <li>Yuma Bar</li>
+                <li>Merch area</li>
+                <li>Terrace Food areas</li>
+                <li>Beer Barn</li>
+                <li>Outdoor Theatre bar</li>
+                <li>Indio Central Market</li>
+                <li>Sonora bar</li>
+                <li>Rose Garden</li>
+                <li>Camping General Store</li>
+                <li>Camping Activities area</li>
+                <li>Rideshare Lot</li>
+            </ul>
+            <p>*Subject to change.</p>
+
+            <h3>Hours (Free Supermarket Shuttles)</h3>
+            <ul>
+                <li>Thursday 3pm-7pm</li>
+                <li>Friday-Sunday 7am-1:30pm</li>
+            </ul>
+            <p>*Departure location & times subject to change.</p>
+
+            <p>More activities details will be added closer to show dates. Sort by “CAMPING”</p>
+        </div>
+
+        <!-- 高级露营区域 -->
+        <div class="premium-camping">
+            <h2>Safari Camping</h2>
+            <p>Nestled in an exclusive, secluded camping area, Safari guests reside in furnished Shikar-style tents and cabanas, enjoy all the comforts of home and zip around the venue via golf cart all weekend long. Includes Guest Passes for 2 people with the option to add additional guests.</p>
+            <div class="invalid-chars">福 验 T 美 日 1 明 E A</div>
+
+            <div class="premium-card">
+                <h3>The Resort at Coachella</h3>
+                <p>The Resort at Coachella provides premium festival access, featuring stylish studio style Residences or furnished Yurts on the Safari Campground. Cruise around the festival grounds in a golf cart all weekend and live like a VIP with Artist Passes for 2 people.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
