@@ -1,8 +1,8 @@
 // nav.js
 
-document.addEventListener("DOMContentLoaded", function () {
-  /* ========== 顶部导航下拉 ========== */
+// nav.js
 
+document.addEventListener("DOMContentLoaded", function () {
   const dropdowns = [
     { buttonId: "arrivalToggle", menuId: "arrivalMenu" },
     { buttonId: "experienceToggle", menuId: "experienceMenu" },
@@ -22,13 +22,17 @@ document.addEventListener("DOMContentLoaded", function () {
     menus[menuId] = menu;
 
     btn.addEventListener("click", function (e) {
-      e.stopPropagation(); // 阻止冒泡到 document
+      e.stopPropagation();
 
-      // 先关掉其他所有 dropdown
+      const wasOpen = menu.classList.contains("open");
+
       closeAll();
 
-      // 再切换当前这个
-      menu.classList.toggle("open");
+      if (!wasOpen) {
+        positionMenuUnderButton(btn, menu);
+        menu.classList.add("open");
+        revealMenuItems(menu);
+      }
     });
   });
 
@@ -46,7 +50,44 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function closeAll() {
-    Object.values(menus).forEach((menu) => menu.classList.remove("open"));
+    Object.values(menus).forEach((menu) => {
+      menu.classList.remove("open");
+      resetMenuItems(menu);
+    });
+  }
+
+  /* === 核心：让 dropdown 对齐对应按钮 === */
+  function positionMenuUnderButton(button, menu) {
+    const btnRect = button.getBoundingClientRect();
+    const headerRect = document
+      .querySelector(".site-header")
+      .getBoundingClientRect();
+
+    // 右对齐按钮
+    const rightOffset =
+      window.innerWidth - btnRect.right;
+
+    menu.style.left = "auto";
+    menu.style.right = `${rightOffset}px`;
+  }
+
+  /* === stagger reveal === */
+  function revealMenuItems(menu) {
+    const items = menu.querySelectorAll(".arrival-item");
+    items.forEach((item, i) => {
+      item.classList.remove("reveal");
+      item.style.animationDelay = `${i * 0.08}s`;
+      void item.offsetWidth;
+      item.classList.add("reveal");
+    });
+  }
+
+  function resetMenuItems(menu) {
+    const items = menu.querySelectorAll(".arrival-item");
+    items.forEach((item) => {
+      item.classList.remove("reveal");
+      item.style.animationDelay = "0s";
+    });
   }
 
   /* ========== D3 genre map + filter ========== */

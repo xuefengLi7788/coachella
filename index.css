@@ -2,18 +2,25 @@
 @font-face {
     font-family: "Yipes"; 
     /* 替换为你的字体文件路径+格式，多格式更兼容 */
-    src: url("fonts/Yipes.ttf") format("truetype");
+    src: url("Yipes.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
-font-family: "body"; 
-/* 替换为你的字体文件路径+格式，多格式更兼容 */
-src: url("fonts/Harietta Bold.otf") format("truetype");
-font-weight: normal;
-font-style: normal;
+  font-family: "body";
+  src:
+    url("CTVanitas-Bold.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
 }
-
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-image: url("pic/bg.png"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .site-header {
   font-family: "Yipes";
   display: flex;
@@ -82,6 +89,7 @@ font-style: normal;
 }
 
 .artists {
+  font-family: "body";
   margin: 0;
   line-height: 1.5;
   font-size: 15px;

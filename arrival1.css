@@ -1,15 +1,16 @@
 /* ========== 字体 ========== */
 @font-face {
   font-family: "Yipes";
-  src: url("fonts/Yipes.ttf") format("truetype");
+  src: url("Yipes.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "body";
-  src: url("fonts/Harietta Bold.otf") format("opentype");
-  font-weight: normal;
+  src:
+    url("CTVanitas-Bold.otf") format("opentype");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -19,13 +20,34 @@
 }
 
 body {
+  width: 100%;
+  min-height: 100vh;
   margin: 0;
-  font-family: "body", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+  font-family: "body", -apple-system, BlinkMacSystemFont,
     Arial, sans-serif;
   color: #111;
-  background-color: #ffffff;
+  background-image: url("pic/bg2.png"); 
 }
+body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 220px;              /* 拉高一点，避免硬边 */
+  pointer-events: none;
+  z-index: 50;
 
+  background: linear-gradient(
+    to bottom,
+    rgba(240, 221, 234, 0) 0%,
+    rgba(240, 221, 234, 0.35) 55%,
+    rgba(240, 221, 234, 1) 100%
+  );
+
+  filter: blur(8px);          /* 关键：把那根 1px “抹掉” */
+  transform: translateY(6px); /* 防止 blur 露出边缘 */
+}
 /* ========== Header & Nav ========== */
 
 .site-header {
@@ -68,7 +90,11 @@ body {
   font-size: 15px;
   padding-top: 4px;
 }
-
+.dropdown,
+.dropdown .arrival-box,
+.dropdown .arrival-item {
+  font-family: "body", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
 .nav-link {
   font-size: 14px;
   letter-spacing: 0.18em;
@@ -77,6 +103,7 @@ body {
   color: #000;
   cursor: pointer;
 }
+
 
 /* button 版本的 nav-link */
 .nav-link-btn {
@@ -87,6 +114,7 @@ body {
 }
 
 .nav-link:hover {
+  color: #c876ff;
   text-decoration: underline;
 }
 
@@ -94,28 +122,18 @@ body {
   font-size: 12px;
 }
 
-/* 搜索按钮 */
-.search-btn {
-  border: 1px solid #b3b3b3;
-  background: #fff;
-  border-radius: 4px;
-  width: 32px;
-  height: 32px;
-  font-size: 16px;
-  cursor: pointer;
-}
+
 
 /* ========== Dropdown 通用样式 ========== */
 
 .dropdown {
   position: absolute;
-  top: 90px;           /* 可以按视觉效果再微调 */
-  left: 50%;
-  transform: translateX(-50%);
+  top:50px;
   display: none;
   z-index: 100;
-  text-align: left;
+  text-align: right;
 }
+
 
 .dropdown.open {
   display: block;
@@ -129,7 +147,7 @@ body {
 }
 
 .arrival-label {
-  font-family: "Yipes";
+  font-family:"body", -apple-system, BlinkMacSystemFont;
   font-size: 24px;
   font-weight: 300;
   letter-spacing: 0.18em;
@@ -143,20 +161,33 @@ body {
 }
 
 .arrival-box {
-  border: 2px solid #000;
-  padding: 22px 36px;
-  min-width: 220px;
-  background-color: #fff;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  background: transparent;
+  border: none;
+
 }
 
 .arrival-item {
+  text-align: right;
+  white-space: nowrap;
   display: block;
-  font-family: "body", sans-serif;
-  font-size: 20px;
-  margin: 10px 0;
   text-decoration: none;
   color: #000;
+  margin: 10px 0;
+}
+
+.arrival-item.reveal {
+  animation: dropdownFade 0.5s ease forwards;
+}
+
+@keyframes dropdownFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Arrival 下拉第一个灰色、第二个更突出（可以按需要改） */
@@ -186,8 +217,9 @@ body {
   flex-direction: column;
   gap: 8px;
   max-width: 1100px;
-  margin: 140px auto 80px; /* 顶部给 dropdown 留出空间 */
-  padding: 0 24px;
+    margin: 140px auto 0;
+  padding-bottom: 80px;
+
 }
 
 /* 顶部 filter 区 */
@@ -204,9 +236,9 @@ body {
   position: relative;
   width: 900px;
   height: 900px;
-  background: #ffffff;
+  background: transparent;
   overflow: hidden;
-  margin: 0 auto; /* 水平居中 */
+  margin: 0 auto;
 }
 
 /* 坐标轴线 */
@@ -219,7 +251,7 @@ body {
   left: 0;
   top: 50%;
   width: 100%;
-  height: 1px;
+    display: none;
 }
 
 .axis-y {
@@ -227,6 +259,7 @@ body {
   left: 50%;
   width: 1px;
   height: 100%;
+  display: none;
 }
 
 /* 你的 axis label：保持原样 */
