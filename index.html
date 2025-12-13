@@ -8,22 +8,55 @@
 
 <body>
   <!-- HEADER -->
-  <header class="site-header">
+<header class="site-header">
     <div class="logo-block">
-      <h1 class="logo">Coachella</h1>
+      <a href="index.html" class="logo">Coachella</a>
       <p class="dates">2026</p>
     </div>
 
     <nav class="main-nav">
-      <a href="arrival.html" class="nav-link">Arrival</a>
-      <span class="nav-separator">✧</span>
-      <a href="experience.html" class="nav-link">Experience</a>
-      <span class="nav-separator">✧</span>
-      <a href="echoes.html" class="nav-link">Echoes</a>
-      <span class="nav-separator">✧</span>
-      <a href="pass.html" class="nav-link">Pass</a>
-    </nav>
+  <button class="nav-link nav-link-btn" id="arrivalToggle" type="button">
+    Arrival
+  </button>
+  <span class="nav-separator">✧</span>
 
+  <button class="nav-link nav-link-btn" id="experienceToggle" type="button">
+    Experience
+  </button>
+  <span class="nav-separator">✧</span>
+
+  <button class="nav-link nav-link-btn" id="echoesToggle" type="button">
+    Echoes
+  </button>
+  <span class="nav-separator">✧</span>
+
+  <a href="pass.html" class="nav-link">Pass</a>
+    </nav>
+<!-- Arrival dropdown -->
+<div class="dropdown arrival-dropdown" id="arrivalMenu">
+  <div class="arrival-box">
+    <a href="arrival.html" class="arrival-item">Lineup</a>
+    <a href="history.html" class="arrival-item">Story</a>
+    <a href="festivalinfo.html" class="arrival-item">Festival Info</a>
+  </div>
+</div>
+
+<!-- Experience dropdown -->
+<div class="dropdown experience-dropdown" id="experienceMenu">
+  <div class="arrival-box">
+    <a href="Interactive Map.html" class="arrival-item">Map</a>
+    <a href="#getting-there" class="arrival-item">Getting There</a>
+    <a href="campingservice.html" class="arrival-item">Camping</a>
+  </div>
+</div>
+
+<!-- Echoes dropdown -->
+<div class="dropdown echoes-dropdown" id="echoesMenu">
+  <div class="arrival-box">
+    <a href="shop.html" class="arrival-item">Shop</a>
+    <a href="gallery.html" class="arrival-item">Photo Gallery</a>
+  </div>
+</div>
   </header>
 
   <!-- MAIN -->
@@ -203,5 +236,7 @@
       <p class="designer-role">Designs the Desert</p>
     </section>
   </main>
+  <script src="nav.js"></script>
 </body>
+
 </html>

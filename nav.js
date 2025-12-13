@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const map = document.getElementById("map");
   const controls = document.getElementById("controls");
+  const tooltip = document.getElementById("tooltip");
 
   if (!map || !controls) {
     console.error("#map 或 #controls 没找到，检查一下 HTML 里的 id 是否对应");
@@ -168,7 +169,82 @@ document.addEventListener("DOMContentLoaded", function () {
   const originX = width / 2;
   const originY = height / 2;
   const scale = 60;
+const artistsMap = {
+  acid_techno: ["Infected Mushroom"],
+  progressive_techno: ["Indira Paganotto", "Klangkuenstler", "Layton Giordani"],
+  industrial_techno: ["Arca", "Darkside"],
+  melodic_house: ["Vintage Culture", "Ben Böhmer", "Eli & Fur", "Moon Boots"],
+  electro_house: ["Moon Boots", "Miike Snow"],
+  deep_house: ["Moon Boots"],
+  tech_house: ["Chris Stussy", "Chris Lorenzo", "Dennis Cruz", "Interplanetary Criminal"],
+  hyperpop: ["Charli XCX", "A. G. Cook", "Glaive"],
+  ambient_pop: ["Japanese Breakfast", "FKA twigs"],
+  indietronica: ["Parcels", "Glass Beams"],
+  art_pop: ["Lady Gaga", "MARINA", "FKA twigs", "Lola Young"],
+  future_garage: ["Sammy Virji"],
+  uk_bass: ["Sammy Virji", "Interplanetary Criminal"],
+  electropop: ["FKA twigs", "Parcels", "MARINA", "Lola Young"],
+  experimental_electronic: ["FKA twigs", "Arca", "Darkside", "Infected Mushroom"],
+  organic_house: ["Damian Lazarus", "Sparrow & Barbossa"],
 
+  afrobeats: ["Rema", "Amaarae"],
+  "alt-r&b": ["Ravyn Lenae", "Amaarae", "Hope Tala"],
+  alt_dance: ["Charli XCX", "Parcels", "Glaive"],
+  alt_z: ["Beabadoobee", "Clairo"],
+  indie_pop: ["Clairo", "Japanese Breakfast", "Beabadoobee", "The Marías", "Still Woozy"],
+  mainstream_pop: ["Lady Gaga", "MARINA", "Jessie Murph"],
+  neo_soul: ["Hope Tala"],
+  k_pop: ["LISA", "JENNIE", "ENHYPEN"],
+  reggaeton: ["Anitta"],
+
+  dance_punk: ["Viagra Boys"],
+  garage_punk: ["Amyl & the Sniffers", "Fucked Up"],
+  garage_rock_revival: ["Viagra Boys", "The Dholis"],
+  hardcore_punk: ["Fucked Up", "Amyl & the Sniffers"],
+  indie_rock: ["Japanese Breakfast", "Beabadoobee", "The Beaches", "Jimmy Eat World", "The Marías"],
+  noise_rock: ["Blonde Redhead"],
+  post_punk_revival: ["The Misfits", "Blonde Redhead", "Viagra Boys"],
+  punk_metal: ["The Misfits"]
+};
+const genreImageMap = {
+  acid_techno: "images/genres/acid_techno.png",
+  afro_house: "images/genres/afro_house.png",
+  afrobeats: "images/genres/afrobeats.png",
+  "alt-r&b": "images/genres/alt_rnb.png",
+  alt_dance: "images/genres/alt_dance.png",
+  alt_z: "images/genres/alt_z.png",
+  art_pop: "images/genres/art_pop.png",
+  dance_punk: "images/genres/dance_punk.png",
+  deep_house: "pic/deephouse.pg",
+  electropop: "images/genres/electropop.png",
+  experimental_electronic: "images/genres/experimental_electronic.png",
+  garage_punk: "images/genres/garage_punk.png",
+  garage_rock_revival: "images/genres/garage_rock_revival.png",
+  hardcore_punk: "images/genres/hardcore_punk.png",
+  hyperpop: "images/genres/hyperpop.png",
+  indie_pop: "images/genres/indie_pop.png",
+  indie_rock: "images/genres/indie_rock.png",
+  indietronica: "images/genres/indietronica.png",
+  k_pop: "images/genres/k_pop.png",
+  mainstream_pop: "images/genres/mainstream_pop.png",
+  neo_soul: "images/genres/neo_soul.png",
+  noise_rock: "images/genres/noise_rock.png",
+  organic_house: "images/genres/organic_house.png",
+  post_punk_revival: "images/genres/post_punk_revival.png",
+  progressive_techno: "images/genres/progressive_techno.png",
+  punk_metal: "images/genres/punk_metal.png",
+  reggaeton: "images/genres/reggaeton.png",
+  tech_house: "images/genres/tech_house.png",
+  uk_bass: "images/genres/uk_bass.png"
+};
+function normalizeKey(s) {
+  return s.toLowerCase().replace(/-/g, "_");
+}
+
+data.forEach(d => {
+  const key = normalizeKey(d.genre);
+  d.artists = artistsMap[key] || [];
+});
   // 创建 tile
   data.forEach((d) => {
     d.width = 26 + d.size * 10;
@@ -179,13 +255,26 @@ document.addEventListener("DOMContentLoaded", function () {
     div.style.width = d.width + "px";
     div.style.height = d.height + "px";
 
-    div.innerHTML = `
-      <span>${d.genre.replace(/_/g, " ")}</span>
-      <div class="size-badge">${d.size}</div>
-    `;
+ const key = normalizeKey(d.genre);
+const img = genreImageMap[key];
 
+div.style.backgroundImage = img ? `url(${img})` : "none";
+div.style.backgroundSize = "contain";
+div.style.backgroundRepeat = "no-repeat";
+div.style.backgroundPosition = "center";
+
+// 文字可以保留，用于 hover
+div.innerHTML = `
+  <span class="genre-label">${d.genre.replace(/_/g, " ")}</span>
+  <div class="size-badge">${d.size}</div>
+`;
+div.dataset.family = d.family;
     map.appendChild(div);
     d.el = div;
+
+  div.addEventListener("mouseenter", (e) => showTooltip(e, d));
+  div.addEventListener("mousemove", moveTooltip);
+  div.addEventListener("mouseleave", hideTooltip);
 
     d.xPos = originX + d.x * scale;
     d.yPos = originY - d.y * scale;
@@ -249,4 +338,155 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 初始显示全部
   updateVisibility();
+  let tooltipLocked = false;
+function showTooltip(e, d) {
+  tooltipLocked = false; // 每次新 hover 都重置
+
+  const artistsHTML = d.artists && d.artists.length
+    ? d.artists.map(a => `<div class="artist" data-artist="${a}">${a}</div>`).join("")
+    : "<div>(no artists yet)</div>";
+
+  tooltip.innerHTML = `
+    <div class="tt-header">
+      ${d.genre.replace(/_/g," ")} <span class="tt-sep">|</span> ${d.family}
+    </div>
+    <div class="tt-artists">
+      ${artistsHTML}
+    </div>
+  `;
+
+  tooltip.classList.add("show");
+
+  // 👇 只在第一次 hover 时定位
+  moveTooltip(e);
+  tooltipLocked = true;
+}
+
+function moveTooltip(e) {
+  if (tooltipLocked) return;
+
+  const pad = 6;
+  let x = e.clientX + pad;
+  let y = e.clientY + pad;
+
+  const rect = tooltip.getBoundingClientRect();
+  if (x + rect.width > window.innerWidth) {
+    x = e.clientX - rect.width - pad;
+  }
+  if (y + rect.height > window.innerHeight) {
+    y = e.clientY - rect.height - pad;
+  }
+
+  tooltip.style.left = x + "px";
+  tooltip.style.top = y + "px";
+}
+
+function hideTooltip() {
+  tooltipLocked = false;
+  tooltip.classList.remove("show");
+}
+
+});
+const audio = new Audio();
+let currentArtist = null;
+
+tooltip.addEventListener("click", async (e) => {
+  const el = e.target.closest(".artist");
+  if (!el) return;
+
+  const artistName = el.dataset.artist;
+
+  if (currentArtist === artistName && !audio.paused) {
+    audio.pause();
+    return;
+  }
+
+  currentArtist = artistName;
+
+  const previewUrl = await fetchSpotifyPreview(artistName);
+
+  if (!previewUrl) {
+    alert("No Spotify preview available");
+    return;
+  }
+
+  audio.src = previewUrl;
+  audio.play();
+});
+async function fetchSpotifyPreview(artist) {
+  const token = await getSpotifyToken();
+
+  const res = await fetch(
+    `https://api.spotify.com/v1/search?q=${encodeURIComponent(artist)}&type=track&limit=1`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+
+  const data = await res.json();
+  const track = data.tracks?.items?.[0];
+  return track?.preview_url || null;
+}
+///map
+document.addEventListener("DOMContentLoaded", () => {
+  const zones = document.querySelectorAll(".hover-zone");
+  const preview = document.getElementById("preview");
+  const previewImg = document.getElementById("previewImg");
+  const previewTitle = document.getElementById("previewTitle");
+  const map = document.getElementById("map");
+
+  if (!zones.length) return;
+
+  zones.forEach(zone => {
+    const img = zone.dataset.img;
+    const title = zone.dataset.title;
+
+    zone.addEventListener("mouseenter", () => {
+      previewImg.src = img;
+      previewTitle.textContent = title;
+      preview.classList.add("show");
+    });
+
+    zone.addEventListener("mousemove", (e) => {
+      const r = map.getBoundingClientRect();
+      let x = e.clientX - r.left + 20;
+      let y = e.clientY - r.top + 20;
+
+      x = Math.min(x, r.width - 240);
+      y = Math.min(y, r.height - 220);
+
+      preview.style.left = x + "px";
+      preview.style.top = y + "px";
+    });
+
+    zone.addEventListener("mouseleave", () => {
+      preview.classList.remove("show");
+    });
+  });
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".seg-btn");
+  const priceNums = document.querySelectorAll(".price-num");
+
+  function setWeek(week){
+    tabs.forEach(btn => {
+      const on = btn.dataset.week === week;
+      btn.classList.toggle("is-active", on);
+      btn.setAttribute("aria-selected", on ? "true" : "false");
+    });
+
+    priceNums.forEach(el => {
+      const key = week === "week2" ? "priceWeek2" : "priceWeek1";
+      const val = el.dataset[key];
+      if (val) el.textContent = val;
+    });
+  }
+
+  tabs.forEach(btn => {
+    btn.addEventListener("click", () => setWeek(btn.dataset.week));
+  });
+
+  setWeek("week1");
 });

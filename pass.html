@@ -2,24 +2,154 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Pass</title>
+  <title>Coachella – Home</title>
+  <link rel="stylesheet" href="pass.css">
 </head>
 
 <body>
 
-  <!-- Back to Home -->
-  <nav>
-    <a href="index.html">Back</a>
-  </nav>
+      <!-- HEADER -->
+<header class="site-header">
+    <div class="logo-block">
+      <a href="index.html" class="logo">Coachella</a>
+      <p class="dates">2026</p>
+    </div>
 
-  <h1>Pass</h1>
-  <p>Select your festival access.</p>
+    <nav class="main-nav">
+  <button class="nav-link nav-link-btn" id="arrivalToggle" type="button">
+    Arrival
+  </button>
+  <span class="nav-separator">✧</span>
 
-  <section class="pass-options">
-    <button class="pass-btn" onclick="location.href='#'">Saturday Pass</button>
-    <button class="pass-btn" onclick="location.href='#'">Sunday Pass</button>
-    <button class="pass-btn" onclick="location.href='#'">2-Day Pass</button>
-  </section>
+  <button class="nav-link nav-link-btn" id="experienceToggle" type="button">
+    Experience
+  </button>
+  <span class="nav-separator">✧</span>
 
+  <button class="nav-link nav-link-btn" id="echoesToggle" type="button">
+    Echoes
+  </button>
+  <span class="nav-separator">✧</span>
+
+  <a href="pass.html" class="nav-link">Pass</a>
+    </nav>
+<!-- Arrival dropdown -->
+<div class="dropdown arrival-dropdown" id="arrivalMenu">
+  <div class="arrival-box">
+    <a href="arrival.html" class="arrival-item">Lineup</a>
+    <a href="history.html" class="arrival-item">Story</a>
+    <a href="festivalinfo.html" class="arrival-item">Festival Info</a>
+  </div>
+</div>
+
+<!-- Experience dropdown -->
+<div class="dropdown experience-dropdown" id="experienceMenu">
+  <div class="arrival-box">
+    <a href="Interactive Map.html" class="arrival-item">Map</a>
+    <a href="#getting-there" class="arrival-item">Getting There</a>
+    <a href="campingservice.html" class="arrival-item">Camping</a>
+  </div>
+</div>
+
+<!-- Echoes dropdown -->
+<div class="dropdown echoes-dropdown" id="echoesMenu">
+  <div class="arrival-box">
+    <a href="shop.html" class="arrival-item">Shop</a>
+    <a href="gallery.html" class="arrival-item">Photo Gallery</a>
+  </div>
+</div>
+  </header>
+<main class="page">
+    <section class="top pass-top" aria-label="Festival passes header">
+  <h1 class="title">Festival Passes</h1>
+
+  <div class="segmented" role="tablist" aria-label="Week toggle">
+    <button class="seg-btn is-active" data-week="week1" type="button" role="tab" aria-selected="true">
+      week1
+    </button>
+    <button class="seg-btn" data-week="week2" type="button" role="tab" aria-selected="false">
+      week2
+    </button>
+  </div>
+</section>
+
+    <section class="cards" id="cards">
+      <!-- GA -->
+      <article class="glass-card" data-week="week1 week2">
+        <div class="card-head">
+          <h2 class="card-title">GA</h2>
+          <div class="price">
+            <span class="price-num" data-price-week1="$499" data-price-week2="$529">$499</span>
+            <span class="price-sub">3-Day</span>
+          </div>
+        </div>
+        <p class="card-body">
+          Allows entrance to the venue all 3 days. General Admission pass holders may visit the GA camping areas.
+        </p>
+        <div class="card-actions">
+          <button class="buy-btn" type="button">Buy</button>
+          <button class="ghost-btn" type="button">Details</button>
+        </div>
+      </article>
+
+      <!-- GA + Shuttle -->
+      <article class="glass-card" data-week="week1 week2">
+        <div class="card-head">
+          <h2 class="card-title">GA + Shuttle</h2>
+          <div class="price">
+            <span class="price-num" data-price-week1="$599" data-price-week2="$629">$599</span>
+            <span class="price-sub">Bundle</span>
+          </div>
+        </div>
+        <p class="card-body">
+          Includes Coachella shuttle pass. Bundle and save $20. GA pass holders may visit GA camping areas.
+        </p>
+        <div class="card-actions">
+          <button class="buy-btn" type="button">Buy</button>
+          <button class="ghost-btn" type="button">Details</button>
+        </div>
+      </article>
+
+      <!-- GA x 4 -->
+      <article class="glass-card" data-week="week1 week2">
+        <div class="card-head">
+          <h2 class="card-title">GA x 4</h2>
+          <div class="price">
+            <span class="price-num" data-price-week1="$1899" data-price-week2="$1999">$1899</span>
+            <span class="price-sub">Group</span>
+          </div>
+        </div>
+        <p class="card-body">
+          Includes 4 GA passes (price shown x4). Save $40. GA pass holders may visit GA camping areas.
+        </p>
+        <div class="card-actions">
+          <button class="buy-btn" type="button">Buy</button>
+          <button class="ghost-btn" type="button">Details</button>
+        </div>
+      </article>
+
+      <!-- VIP -->
+      <article class="glass-card" data-week="week1 week2">
+        <div class="card-head">
+          <h2 class="card-title">VIP</h2>
+          <div class="price">
+            <span class="price-num" data-price-week1="$1099" data-price-week2="$1199">$1099</span>
+            <span class="price-sub">All Weekend</span>
+          </div>
+        </div>
+        <p class="card-body">
+          Allows entry into the venue and VIP areas all weekend. VIP pass holders may visit GA camping areas.
+        </p>
+        <div class="card-actions">
+          <button class="buy-btn" type="button">Buy</button>
+          <button class="ghost-btn" type="button">Details</button>
+        </div>
+      </article>
+    </section>
+
+
+  </main>
+
+ <script src="nav.js"></script>
 </body>
 </html>

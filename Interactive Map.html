@@ -2,22 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Experience – Coachella</title>
+  <title>Coachella – Home</title>
+  <link rel="stylesheet" href="map.css">
 </head>
 
 <body>
+  <!-- HEADER -->
+<header class="site-header">
+    <div class="logo-block">
+      <a href="index.html" class="logo">Coachella</a>
+      <p class="dates">2026</p>
+    </div>
 
-  <nav>
-    <a href="experience.html">Back</a>
-  </nav>
+    <nav class="main-nav">
+  <button class="nav-link nav-link-btn" id="arrivalToggle" type="button">
+    Arrival
+  </button>
+  <span class="nav-separator">✧</span>
 
-  <h1>map</h1>
+  <button class="nav-link nav-link-btn" id="experienceToggle" type="button">
+    Experience
+  </button>
+  <span class="nav-separator">✧</span>
 
-  <ul>
-    
-    <li><a href="#">stage with the artist list </a></li>
-    <li><a href="#"> highlight restroom & Alcohol booth</a></li>
-  </ul>
+  <button class="nav-link nav-link-btn" id="echoesToggle" type="button">
+    Echoes
+  </button>
+  <span class="nav-separator">✧</span>
 
+  <a href="pass.html" class="nav-link">Pass</a>
+    </nav>
+<!-- Arrival dropdown -->
+<div class="dropdown arrival-dropdown" id="arrivalMenu">
+  <div class="arrival-box">
+    <a href="arrival.html" class="arrival-item">Lineup</a>
+    <a href="history.html" class="arrival-item">Story</a>
+    <a href="festivalinfo.html" class="arrival-item">Festival Info</a>
+  </div>
+</div>
+
+<!-- Experience dropdown -->
+<div class="dropdown experience-dropdown" id="experienceMenu">
+  <div class="arrival-box">
+    <a href="Interactive Map.html" class="arrival-item">Map</a>
+    <a href="#getting-there" class="arrival-item">Getting There</a>
+    <a href="campingservice.html" class="arrival-item">Camping</a>
+  </div>
+</div>
+
+<!-- Echoes dropdown -->
+<div class="dropdown echoes-dropdown" id="echoesMenu">
+  <div class="arrival-box">
+    <a href="shop.html" class="arrival-item">Shop</a>
+    <a href="gallery.html" class="arrival-item">Photo Gallery</a>
+  </div>
+</div>
+  </header>
+
+ <!-- ===== MAP ===== -->
+<section class="map-section">
+  <div class="map-wrap" id="map">
+    <img class="map-img" src="pic/map.png" alt="Venue map" />
+
+<!-- Sahara -->
+  <div
+    class="hover-zone"
+    style="left:80px; top:980px; width:260px; height:220px;"
+  >
+    <img src="pic/sahara.png" class="zone-preview" alt="Sahara">
+  </div>
+
+  <!-- Coachella -->
+  <div
+    class="hover-zone"
+    style="left:380px; top:80px; width:300px; height:180px;"
+  >
+    <img src="pic/coachella_main_stage.webp" class="zone-preview" alt="Coachella">
+  </div>
+
+  <!-- Yuma -->
+  <div
+    class="hover-zone"
+    style="left:40px; top:330px; width:250px; height:220px;"
+  >
+    <img src="pic/coachella_yuma_tent-1.webp" class="zone-preview" alt="Yuma">
+  </div>
+  </div>
+</section>
+
+
+  <!-- Your JS (contains both nav + map logic) -->
+  <script src="nav.js" defer></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

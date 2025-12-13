@@ -1,0 +1,390 @@
+/* index */
+@font-face {
+    font-family: "Yipes"; 
+    /* 替换为你的字体文件路径+格式，多格式更兼容 */
+    src: url("Yipes.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+  font-family: "body";
+  src:
+    url("CTVanitas-Bold.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #FBF0CC;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.site-header {
+  font-family: "Yipes";
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 32px 60px 0;
+  position: relative; /* 让 dropdown 相对 header 定位 */
+   z-index: 10;
+}
+
+.logo-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.logo {
+  font-size: 32px;
+  text-decoration: none;
+  color: #000;
+}
+
+.logo:hover {
+  text-decoration: underline;
+}
+
+.dates {
+  margin: 6px 0 0;
+  font-size: 14px;
+  letter-spacing: 2.5em;
+}
+
+/* 顶部主导航 */
+.main-nav {
+  display: flex;
+  font-family: "body", sans-serif;
+  align-items: center;
+  gap: 18px;
+  font-size: 15px;
+  padding-top: 4px;
+}
+.dropdown,
+.dropdown .arrival-box,
+.dropdown .arrival-item {
+  font-family: "body", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+.nav-link {
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: capitalize;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+
+/* button 版本的 nav-link */
+.nav-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+}
+
+.nav-link:hover {
+  color: #c876ff;
+  text-decoration: underline;
+}
+
+.nav-separator {
+  font-size: 12px;
+}
+
+
+
+/* ========== Dropdown 通用样式 ========== */
+
+.dropdown {
+  position: absolute;
+  top:50px;
+  display: none;
+  z-index: 100;
+  text-align: right;
+}
+
+
+.dropdown.open {
+  display: block;
+}
+
+.arrival-label-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.arrival-label {
+  font-family:"body", -apple-system, BlinkMacSystemFont;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: capitalize;
+  border-bottom: 2px solid #000;
+  padding-bottom: 4px;
+}
+
+.arrival-star {
+  font-size: 16px;
+}
+
+.arrival-box {
+display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  background: transparent;
+  border: none;
+
+}
+
+.arrival-item {
+  text-align: right;
+  white-space: nowrap;
+  display: block;
+  text-decoration: none;
+  color: #000;
+  margin: 10px 0;
+}
+
+.arrival-item.reveal {
+  animation: dropdownFade 0.5s ease forwards;
+}
+
+@keyframes dropdownFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Arrival 下拉第一个灰色、第二个更突出（可以按需要改） */
+.arrival-dropdown .arrival-item:first-child {
+  color: #000000;
+}
+
+.arrival-dropdown .arrival-item:nth-child(2) {
+  font-weight: 500;
+}
+
+.arrival-item:hover {
+  text-decoration: underline;
+}
+
+/* Experience/Echoes 可以跟 Arrival 一样，也可以单独调 */
+.experience-dropdown .arrival-label,
+.echoes-dropdown .arrival-label {
+  /* 目前沿用同一套样式，需要的话在这里单独改颜色/大小 */
+}
+/* =========================
+   PASS PAGE (add-on only)
+   不修改你现有的 header/dropdown/nav
+   ========================= */
+
+/* 页面容器：让内容在 header 下方有呼吸感 */
+.page{
+  width: min(720px, 92vw);
+  margin: 28px auto 80px;
+}
+
+/* “Festival Passes + week1/week2” 顶部玻璃条 */
+.pass-top{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 18px 18px;
+  border-radius: 22px;
+
+  background: rgba(255,255,255,.28);
+  border: 1px solid rgba(255,255,255,.42);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.10),
+    inset 0 1px 0 rgba(255,255,255,.55);
+
+  margin: 18px 0 22px;
+}
+
+/* 标题：用你全站的字体体系 */
+.title{
+  margin: 0;
+  font-size: clamp(28px, 4vw, 40px);
+  font-family: "body", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: .02em;
+}
+
+/* week1/week2 segmented（玻璃按钮） */
+.segmented{
+  display: inline-flex;
+  padding: 8px;
+  border-radius: 18px;
+
+  background: rgba(255,255,255,.35);
+  border: 1px solid rgba(0,0,0,.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 18px 50px rgba(0,0,0,.06);
+  gap: 8px;
+}
+
+.seg-btn{
+  border: 0;
+  cursor: pointer;
+  padding: 12px 22px;
+  border-radius: 14px;
+
+  font: inherit;
+  font-family: "body", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: .02em;
+
+  background: transparent;
+  transition: transform .15s ease, background .15s ease, box-shadow .15s ease, opacity .15s ease;
+  opacity: .7;
+}
+
+.seg-btn:hover{
+  transform: translateY(-1px);
+  opacity: 1;
+}
+
+.seg-btn.is-active{
+  opacity: 1;
+  background: rgba(255,255,255,.62);
+  box-shadow: 0 10px 28px rgba(0,0,0,.08);
+}
+
+/* 卡片列表 */
+.cards{
+  display: grid;
+  gap: 18px;
+}
+
+/* 玻璃卡片 */
+.glass-card{
+  border-radius: 28px;
+  padding: 22px 22px 18px;
+
+  background: rgba(255,255,255,.28);
+  border: 1px solid rgba(255,255,255,.42);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.10),
+    inset 0 1px 0 rgba(255,255,255,.55);
+
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background: radial-gradient(600px 140px at 20% 0%, rgba(255,255,255,.45), transparent 60%);
+  opacity: .9;
+  pointer-events:none;
+}
+
+.card-head{
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+}
+
+.card-title{
+  margin: 0;
+  font-size: 22px;
+  font-family: "body", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: .02em;
+}
+
+.price{
+  text-align:right;
+  line-height: 1.05;
+  font-family: "body", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+.price-num{
+  display:block;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.price-sub{
+  display:block;
+  font-size: 12px;
+  opacity: .75;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.card-body{
+  margin: 14px 0 16px;
+  font-family: "body", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: .02em;
+  line-height: 1.55;
+  opacity: .92;
+}
+
+/* 卡片按钮 */
+.card-actions{
+  display:flex;
+  gap: 10px;
+}
+
+.buy-btn, .ghost-btn{
+  border-radius: 14px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font: inherit;
+  font-family: "body", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, opacity .15s ease;
+}
+
+.buy-btn{
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.70);
+  box-shadow: 0 12px 30px rgba(0,0,0,.10);
+}
+
+.buy-btn:hover{ transform: translateY(-1px); }
+.buy-btn:active{ transform: translateY(0px); opacity: .9; }
+
+.ghost-btn{
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.35);
+  opacity: .85;
+}
+
+.ghost-btn:hover{ opacity: 1; transform: translateY(-1px); }
+
+/* 小屏幕适配 */
+@media (max-width: 520px){
+  .pass-top{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .segmented{
+    width: 100%;
+    justify-content: space-between;
+  }
+  .seg-btn{
+    flex: 1;
+  }
+}

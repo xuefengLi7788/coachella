@@ -183,6 +183,17 @@ display: flex;
   animation: dropdownFade 0.5s ease forwards;
 }
 
+.tile[data-family="Electronic"] {
+  filter: hue-rotate(0deg);
+}
+
+.tile[data-family="Pop"] {
+  filter: hue-rotate(30deg);
+}
+
+.tile[data-family="Rock"] {
+  filter: hue-rotate(-20deg);
+}
 @keyframes dropdownFade {
   to {
     opacity: 1;
@@ -192,7 +203,7 @@ display: flex;
 
 /* Arrival 下拉第一个灰色、第二个更突出（可以按需要改） */
 .arrival-dropdown .arrival-item:first-child {
-  color: #b5b5b5;
+  color: #000000;
 }
 
 .arrival-dropdown .arrival-item:nth-child(2) {
@@ -273,18 +284,20 @@ display: flex;
 /* 你的 tile：保持原样 */
 .tile {
   position: absolute;
-  background: #d9d9d9;
-  color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  font-size: 10px;
-  padding: 4px;
-  box-sizing: border-box;
-  border-radius: 2px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  user-select: none;
+
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.03);
+
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
 }
 
 .tile span {
@@ -336,4 +349,49 @@ display: flex;
     left: 24px;
     transform: none;
   }
+}
+.tt-header {
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: #d30bc2;
+}
+
+.tt-sep {
+  opacity: 0.6;
+  margin: 0 4px;
+}
+
+.tt-artists {
+  font-size: 14px;
+  color: #000000;
+  line-height: 1.4;
+  margin-top: 2px;
+
+  display: flex;
+  flex-direction: column; /* 竖排 */
+  gap: 2px;
+}
+.tooltip {
+  position: fixed;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.85);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.3;
+  max-width: 260px;
+  pointer-events: none;
+
+
+  transition: opacity 120ms ease;
+}
+.artist {
+  cursor: pointer;
+  color: #000000;
+}
+
+.artist:hover {
+  text-decoration: underline;
 }
